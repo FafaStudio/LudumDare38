@@ -12,6 +12,7 @@ public class MainConstructUI : MonoBehaviour {
 	}
 
 	public void instantiate(){
+		print(builder.getActualPart());
 		if(builder.getActualPart().canMainConstruct()){
 			builder.getActualPart().addMainConstruct(mainContruct);
 		}

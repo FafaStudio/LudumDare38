@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/MainHugo.unity
+- path: Assets/Scenes/MainSulexa.unity
   isLoaded: 1
   isActive: 1

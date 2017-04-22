@@ -20,12 +20,12 @@ public class WorldController : MonoBehaviour {
 
 	private void setWorldParts(){
 		worldParts = new List<WorldPart>();
-		float partNumber = 16;
+		float partNumber = 24;
 		int miniGrassNumber = 3;
 		int miniMineralNumber = 3;
-		float grassNumber = 7;
-		float mineralNumber = 7;
-		float gemNumber = 2;
+		float grassNumber = 10;
+		float mineralNumber = 10;
+		float gemNumber = 4;
 		int sterileNumber = 4;
 
 		for (int i = 0; i < 6; i++)//on assure un spawn decent
@@ -62,7 +62,7 @@ public class WorldController : MonoBehaviour {
 		}
 
 		while(sterileNumber > 0){
-			int sterileRandomValue = Random.Range(6,15);//mettre en stérile parfois
+			int sterileRandomValue = Random.Range(6,23);//mettre en stérile parfois
 			if(!worldParts[sterileRandomValue].getIsSterile()){
 				worldParts[sterileRandomValue].setIsSterile(true);
 				sterileNumber--;
@@ -71,7 +71,7 @@ public class WorldController : MonoBehaviour {
 	}
 
 	private WorldPart instantiateWorldPart(int index, WorldPart worldPart){
-		WorldPart instance = Instantiate(worldPart, transform.position, Quaternion.Euler(0, 0, (float)-22.5*index), transform);
+		WorldPart instance = Instantiate(worldPart, transform.position, Quaternion.Euler(0, 0, (float)-15*index), transform);
 		instance.name = "Part " + index + " (" + instance.GetType() + ")"; 
 		return instance;
 	}

@@ -15,11 +15,11 @@ public class WorldPart : MonoBehaviour {
 	bool isSterile;
 	bool isOccuped;
 
-	int baseOxygenProduct;
-	int baseWoodProduct;
-	int baseMineralProduct;
-	int baseEnergieProduct;
-	int baseGemProduct;
+	int oxygenMultiplicator;
+	int woodMultiplicator;
+	int mineralMultiplicator;
+	int energieMultiplicator;
+	int gemMultiplicator;
 
 	// Use this for initialization
 	void Awake () {
@@ -50,26 +50,26 @@ public class WorldPart : MonoBehaviour {
 		secondaryConstruct = secondaryEmptyConstruct;
 	}
 
-    public void setOxygenProduct(int product){baseOxygenProduct = product;}
-	public void setWoodProduct(int product){baseWoodProduct = product;}
-	public void setMineralProduct(int product){baseMineralProduct = product;}
-	public void setEnergieProduct(int product){baseEnergieProduct = product;}
-	public void setGemProduct(int product){baseGemProduct = product;}
+    public void setOxygenMultiplicator(int product){oxygenMultiplicator = product;}
+	public void setWoodMultiplicator(int product){woodMultiplicator = product;}
+	public void setMineralMultiplicator(int product){mineralMultiplicator = product;}
+	public void setEnergieMultiplicator(int product){energieMultiplicator = product;}
+	public void setGemMultiplicator(int product){gemMultiplicator = product;}
 
 	public int getOxygenProduct(){
-		return baseOxygenProduct * mainConstruct.getOxygenMultiplicatorProduction() + mainConstruct.getOxygenProduction() - secondaryConstruct.getOxygenCost();
+		return oxygenMultiplicator * mainConstruct.getOxygenProduction() - secondaryConstruct.getOxygenCost();
 	}
 	public int getWoodProduct(){
-		return baseWoodProduct * mainConstruct.getWoodMultiplicatorProduction() + mainConstruct.getWoodProduction();
+		return woodMultiplicator * mainConstruct.getWoodProduction();
 	}
 	public int getMineralProduct(){
-		return baseMineralProduct * mainConstruct.getMineralMultiplicatorProduction() + mainConstruct.getMineralProduction();
+		return mineralMultiplicator * mainConstruct.getMineralProduction();
 	}
 	public int getEnergieProduct(){
-		return baseEnergieProduct * mainConstruct.getEnergieMultiplicatorProduction() + mainConstruct.getEnergieProduction() - mainConstruct.getEnergyCost() - secondaryConstruct.getEnergyCost();
+		return energieMultiplicator * mainConstruct.getEnergieProduction() - mainConstruct.getEnergyCost() - secondaryConstruct.getEnergyCost();
 	}
 	public int getGemProduct(){
-		return baseGemProduct * mainConstruct.getGemMultiplicatorProduction() + mainConstruct.getGemProduction() ;
+		return gemMultiplicator * mainConstruct.getGemProduction() ;
 	}
 
 

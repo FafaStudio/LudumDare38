@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour {
-
+	
 	Rigidbody2D body;
+	public Builder builder;
 
 	void Awake() {
 		body = GetComponent<Rigidbody2D> ();
@@ -18,6 +19,6 @@ public class MovementController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		print (coll.gameObject);
+		builder.setActualPart(coll.gameObject);
 	}
 }

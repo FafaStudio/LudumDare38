@@ -6,11 +6,11 @@ public class GemPart : WorldPart {
 
 	// Use this for initialization
 	void Start () {
-		setWoodProduct(0);
-		setOxygenProduct(0);
-		setMineralProduct(0);
-		setEnergieProduct(0);
-		setGemProduct(10);
+		setOxygenMultiplicator(0);
+		setWoodMultiplicator(0);
+		setMineralMultiplicator(0);
+		setEnergieMultiplicator(0);
+		setGemMultiplicator(10);
 	}
 	
 	// Update is called once per frame

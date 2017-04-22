@@ -6,11 +6,11 @@ public class GrassPart : WorldPart {
 	
 	// Use this for initialization
 	void Start () {
-		setWoodProduct(10);
-		setOxygenProduct(10);
-		setMineralProduct(0);
-		setEnergieProduct(0);
-		setGemProduct(0);
+		setOxygenMultiplicator(10);
+		setWoodMultiplicator(10);
+		setMineralMultiplicator(0);
+		setEnergieMultiplicator(0);
+		setGemMultiplicator(0);
 	}
 	
 	// Update is called once per frame

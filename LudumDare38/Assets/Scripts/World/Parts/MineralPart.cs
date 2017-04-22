@@ -6,11 +6,11 @@ public class MineralPart : WorldPart {
 
 	// Use this for initialization
 	void Start () {
-		setWoodProduct(0);
-		setOxygenProduct(0);
-		setMineralProduct(10);
-		setEnergieProduct(10);
-		setGemProduct(0);
+		setOxygenMultiplicator(0);
+		setWoodMultiplicator(0);
+		setMineralMultiplicator(10);
+		setEnergieMultiplicator(10);
+		setGemMultiplicator(0);
 	}
 	
 	// Update is called once per frame

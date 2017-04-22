@@ -15,11 +15,6 @@ public class MainConstructUpgrades{
     public int energyBaseProduction;
     public int gemBaseProduction;
 
-    public int oxygenMultiplicatorProduction;
-    public int woodMultiplicatorProduction;
-    public int mineralMultiplicatorProduction;
-    public int energyMultiplicatorProduction;
-    public int gemMultiplicatorProduction;
 	public int upgradeWoodCost;
 	public int upgradeMineralCost;
 	public int upgradeGemCost;

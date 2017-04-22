@@ -39,22 +39,6 @@ public class MainConstruct : MonoBehaviour
 		return upgrades.mainConstructUpgrades[constructLevel].gemBaseProduction;
 	}
 
-	public int getOxygenMultiplicatorProduction(){
-		return upgrades.mainConstructUpgrades[constructLevel].oxygenMultiplicatorProduction;
-	}
-	public int getWoodMultiplicatorProduction(){
-		return upgrades.mainConstructUpgrades[constructLevel].woodMultiplicatorProduction;
-	}
-	public int getMineralMultiplicatorProduction(){
-		return upgrades.mainConstructUpgrades[constructLevel].mineralMultiplicatorProduction;
-	}
-	public int getEnergieMultiplicatorProduction(){
-		return upgrades.mainConstructUpgrades[constructLevel].energyMultiplicatorProduction;
-	}
-	public int getGemMultiplicatorProduction(){
-		return upgrades.mainConstructUpgrades[constructLevel].gemMultiplicatorProduction;
-	}
-
 	public int getEnergyCost(){
 		return upgrades.mainConstructUpgrades[constructLevel].energyCost;
 	}

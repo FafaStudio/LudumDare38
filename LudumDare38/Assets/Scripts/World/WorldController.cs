@@ -9,12 +9,11 @@ public class WorldController : MonoBehaviour {
 	public GrassPart grassPart;
 	public MineralPart mineralPart;
 	public GemPart gemPart;
-	// Use this for initialization
+
 	void Awake () {
 		setWorldParts();
 	}
-	
-	// Update is called once per frame
+		
 	void Update () {
 		
 	}
@@ -51,7 +50,7 @@ public class WorldController : MonoBehaviour {
 				worldParts.Add(instantiateWorldPart(i, grassPart));
 				//on add un grass
 				grassNumber--;
-			}	else	if(gemNumber == 0 || (partRandomValue < grassNumber + mineralNumber/(partNumber - i) && mineralNumber != 0)){
+			}	else if(gemNumber == 0 || (partRandomValue < grassNumber + mineralNumber/(partNumber - i) && mineralNumber != 0)){
 				worldParts.Add(instantiateWorldPart(i, mineralPart));
 				//on add un mineral
 				mineralNumber--;

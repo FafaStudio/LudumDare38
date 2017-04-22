@@ -9,6 +9,9 @@ public class WorldPart : MonoBehaviour {
 	public MainConstruct mainConstruct;
 	public SecondaryConstruct secondaryConstruct;
 
+	public MainConstruct mainEmptyConstruct;
+	public SecondaryConstruct secondaryEmptyConstruct;
+
 	bool isSterile;
 	bool isOccuped;
 
@@ -19,8 +22,9 @@ public class WorldPart : MonoBehaviour {
 	int baseGemProduct;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+		mainConstruct = mainEmptyConstruct;
+		secondaryConstruct = secondaryEmptyConstruct;
 	}
 	
 	// Update is called once per frame
@@ -29,19 +33,21 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void addMainConstruct(MainConstruct mainConstruct){
-
+		this.mainConstruct = mainConstruct;
 	}
 
 	public void removeMainConstruct(){
-		
+		DestroyImmediate(mainConstruct.gameObject);
+		mainConstruct = mainEmptyConstruct;
 	}
 
 	public void addSecondaryConstruct(SecondaryConstruct secondaryConstruct){
-
+		this.secondaryConstruct = secondaryConstruct;
 	}
 
 	public void removeSecondaryConstruct(){
-		
+		DestroyImmediate(secondaryConstruct.gameObject);
+		secondaryConstruct = secondaryEmptyConstruct;
 	}
 
     public void setOxygenProduct(int product){baseOxygenProduct = product;}

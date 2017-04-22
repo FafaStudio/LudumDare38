@@ -14,7 +14,7 @@ public class CameraManager : MonoBehaviour {
 	void Update () {
 	//positif : je dezoom
 	//negatif : je zoom
-		camera.orthographicSize += Input.GetAxis ("Mouse ScrollWheel")*0.5f;
+		camera.orthographicSize -= Input.GetAxis ("Mouse ScrollWheel")*0.8f;
 		if (camera.orthographicSize > 7)
 			camera.orthographicSize = 7;
 		else if (camera.orthographicSize < 4) {

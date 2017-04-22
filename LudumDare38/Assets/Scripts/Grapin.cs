@@ -36,6 +36,7 @@ public class Grapin : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
+		
 		if (coll.gameObject.tag == "Player"){
 			if (!triggerOff) {
 				player.endGrab ();

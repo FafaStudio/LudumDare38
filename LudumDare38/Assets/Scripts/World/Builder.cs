@@ -24,6 +24,10 @@ public class Builder : MonoBehaviour {
 		displayBuilderMenu();
 	}
 
+	public WorldPart getActualPart(){
+		return actualPart;
+	}
+
 	private void undisplayPartMenu(){
 		worldPartUI.undisplayInterface();
 	}

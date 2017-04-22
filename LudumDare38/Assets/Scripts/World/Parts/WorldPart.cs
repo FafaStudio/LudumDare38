@@ -32,8 +32,17 @@ public class WorldPart : MonoBehaviour {
 		
 	}
 
-	public void addMainConstruct(MainConstruct mainConstruct){
-		this.mainConstruct = mainConstruct;
+	public bool canMainConstruct(){
+		return mainConstruct.name == "Empty";
+	}
+
+	public bool canSecondaryConstruct(){
+		return secondaryConstruct.name == "Empty";
+	}
+
+	public void addMainConstruct(GameObject mainConstruct){
+		GameObject instance = Instantiate(mainConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
+		this.mainConstruct = instance.GetComponent<MainConstruct>();
 	}
 
 	public void removeMainConstruct(){

@@ -51,6 +51,9 @@
      <Compile Include="Assets\Scripts\MovementController.cs" />
      <Compile Include="Assets\Scripts\RessourcesUI.cs" />
      <Compile Include="Assets\Scripts\UI\BuildingUI.cs" />
+     <Compile Include="Assets\Scripts\UI\MainConstructUI.cs" />
+     <Compile Include="Assets\Scripts\UI\SecondaryConstructUI.cs" />
+     <Compile Include="Assets\Scripts\UI\TemporaryConstrucUI.cs" />
      <Compile Include="Assets\Scripts\UI\WorldPartUI.cs" />
      <Compile Include="Assets\Scripts\World\Builder.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\MainConstruct.cs" />

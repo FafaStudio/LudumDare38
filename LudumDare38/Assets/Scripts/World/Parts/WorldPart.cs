@@ -21,15 +21,9 @@ public class WorldPart : MonoBehaviour {
 	float energieMultiplicator;
 	float gemMultiplicator;
 
-	// Use this for initialization
 	void Awake () {
 		mainConstruct = mainEmptyConstruct;
 		secondaryConstruct = secondaryEmptyConstruct;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public bool canMainConstruct(){

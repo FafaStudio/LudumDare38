@@ -14,8 +14,13 @@ public class MovementController : MonoBehaviour {
 	public Grapin grapin;
 	bool grabbing=false;
 
+	Animator anim;
+	SpriteRenderer sprite;
+
 	void Awake() {
 		body = GetComponent<Rigidbody2D> ();
+		anim = GetComponent<Animator> ();
+		sprite = GetComponent<SpriteRenderer> ();
 		camera = Camera.main;
 	}
 
@@ -35,10 +40,17 @@ public class MovementController : MonoBehaviour {
 	void FixedUpdate () {
 		if (!canMove)
 			return;
-		if(Input.GetKey(KeyCode.Q))
-			transform.RotateAround (new Vector3(0f,0f,0f), new Vector3(0f,0f,1f),1f);
-		else if(Input.GetKey(KeyCode.D))
-			transform.RotateAround (new Vector3(0f,0f,0f), new Vector3(0f,0f,1f),-1f);
+		if (Input.GetKey (KeyCode.Q)) {
+			anim.SetBool ("isWalking", true);
+			sprite.flipX = true;
+			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 1f);
+		} else if (Input.GetKey (KeyCode.D)) {
+			sprite.flipX = false;
+			anim.SetBool ("isWalking", true);
+			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -1f);
+		} else {
+			anim.SetBool ("isWalking", false);
+		}
 	}
 
 	void useGrab(Vector3 finalPosition){
@@ -47,15 +59,7 @@ public class MovementController : MonoBehaviour {
 		finalPosition.z = 0f;
 		grapin.gameObject.SetActive (true);
 		grapin.setDestination (finalPosition);
-		StartCoroutine (tempoGrab ());
 		grapin.setIsLaunch (true);//lance le grapin
-	}
-
-	IEnumerator tempoGrab(){
-		// pour empecher le trigger lorsque je lance poulpi
-		grapin.setTriggerOff (true);
-		yield return new WaitForSeconds(0.05f);
-		grapin.setTriggerOff (false);
 	}
 
 	public void endGrab(){

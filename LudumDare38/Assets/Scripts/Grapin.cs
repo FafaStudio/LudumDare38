@@ -8,23 +8,25 @@ public class Grapin : MonoBehaviour {
 	MovementController player;
 
 	bool isLaunch=false;
-	bool triggerOff=false;
+	bool comeBack=false;
 
 	void Update () {
 		if (!isLaunch)
 			return;
 		transform.position = Vector3.MoveTowards(transform.position, destination, 5f*Time.deltaTime);
 		if (this.transform.position == destination) {
-			destination = player.transform.position;
+			if (comeBack) {
+				player.endGrab ();
+				comeBack = false;
+			} else {
+				destination = player.transform.position;
+				comeBack = true;
+			}
 		}
 	}
 
 	public void setDestination(Vector3 val){
 		destination = val;
-	}
-
-	public void setTriggerOff(bool val){
-		triggerOff = val;
 	}
 
 	public void setPlayer(MovementController val){
@@ -34,15 +36,11 @@ public class Grapin : MonoBehaviour {
 	public void setIsLaunch(bool val){
 		isLaunch = val;
 	}
+		
 
-	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Ground") {
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.gameObject.tag =="Ground") {
 			print ("wow");
-		}
-		else if (coll.gameObject.tag == "Player"){
-			if (!triggerOff) {
-				player.endGrab ();
-			}
 		}
 	}
 }

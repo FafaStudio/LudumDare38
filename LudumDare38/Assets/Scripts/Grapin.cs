@@ -37,10 +37,10 @@ public class Grapin : MonoBehaviour {
 		isLaunch = val;
 	}
 		
-
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag =="Ground") {
-			print ("wow");
+			destination = player.transform.position;
+			comeBack = true;
 		}
 	}
 }

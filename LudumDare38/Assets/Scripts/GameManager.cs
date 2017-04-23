@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour {
 		return gameDay;
 	}
 
+	public float getDayDuration(){
+		return dayDuration;
+	}
+
 
 	private static GameManager s_Instance = null;
 

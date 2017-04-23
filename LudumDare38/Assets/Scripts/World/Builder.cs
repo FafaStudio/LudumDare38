@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Builder : MonoBehaviour {
+	
 	WorldPart actualPart;
 	WorldPartUI worldPartUI;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	public GameObject selectedPart;
 
 	public void setActualPart(GameObject actualPartObject){
 		if(actualPart != null){
 			undisplayPartMenu();
 		}
 		this.actualPart = actualPartObject.GetComponent<WorldPart>();
+		updateFeedbackPart ();
 		this.worldPartUI = actualPartObject.GetComponent<WorldPartUI>();
 		displayBuilderMenu();
+	}
+
+	public void updateFeedbackPart(){
+	//animation du ground qui bouge
+		actualPart.launchSelectedAnimation ();
 	}
 
 	public WorldPart getActualPart(){
@@ -29,6 +29,7 @@ public class Builder : MonoBehaviour {
 	}
 
 	private void undisplayPartMenu(){
+		actualPart.stopSelectedAnimation ();
 		worldPartUI.undisplayInterface();
 	}
 

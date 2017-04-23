@@ -24,11 +24,22 @@ public class WorldPart : MonoBehaviour {
 	float energieMultiplicator;
 	float gemMultiplicator;
 
+	Animator anim;
+
 	void Awake () {
 		builder = Builder.instance;
 		gameManager = GameManager.instance;
 		mainConstruct = mainEmptyConstruct;
 		secondaryConstruct = secondaryEmptyConstruct;
+		anim = GetComponent<Animator> ();
+	}
+
+	public void launchSelectedAnimation(){
+		anim.SetBool ("isSelected", true);
+	}
+
+	public void stopSelectedAnimation(){
+		anim.SetBool ("isSelected", false);
 	}
 
 	public bool canMainConstruct(){
@@ -87,7 +98,6 @@ public class WorldPart : MonoBehaviour {
 		return gemMultiplicator * mainConstruct.getGemProduction() ;
 	}
 
-
 	public void setIsSterile(bool boolean){
 		isSterile = boolean;
 		if(isSterile){
@@ -98,6 +108,7 @@ public class WorldPart : MonoBehaviour {
 	public bool getIsSterile(){
 		return isSterile;
 	}
+
 	public void sterilize(){
 		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("MORTADELLE");
 		setSterileMultiplicator();

@@ -30,11 +30,8 @@ public class GameManager : MonoBehaviour {
 		energy = 50;
 		gem = 0;
 		startLastDay = Time.time;
-<<<<<<< HEAD
 		InvokeRepeating("getSecondeResources", 0, 1);
-=======
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
->>>>>>> 9cc9432e4eeacae30c6f8848aee9be3a7d1503e7
 	}
 	
 	// Update is called once per frame

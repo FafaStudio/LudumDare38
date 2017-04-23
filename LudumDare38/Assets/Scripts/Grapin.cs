@@ -44,6 +44,19 @@ public class Grapin : MonoBehaviour {
 	}
 
 	void movePoulpi(){
+		
+		bool sens = player.transform.rotation.eulerAngles.z > transform.rotation.eulerAngles.z;
+		if(Mathf.Abs(player.transform.rotation.eulerAngles.z - transform.rotation.eulerAngles.z) > 180){
+				sens = !sens;
+		}
+		if(sens){
+			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = true;
+			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 0.7f);
+		}	else	{
+			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
+			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -0.7f);
+		}
+
 		/*float playerRotation;
 		float poulpiRotation;
 		if (this.transform.rotation.z < 0) 
@@ -62,13 +75,14 @@ public class Grapin : MonoBehaviour {
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -1f);
 		else
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 1f);*/
+			/* 
 		if (isRight) {
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -0.7f);
 		}else {
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = true;
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 0.7f);
-		}
+		}*/
 	}
 
 	public void calculateDistanceFromPlayer(){

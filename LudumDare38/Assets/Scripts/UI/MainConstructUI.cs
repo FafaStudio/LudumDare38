@@ -8,6 +8,7 @@ public class MainConstructUI : MonoBehaviour {
 	public GameObject mainContruct;
 	public Text description;
 	void Awake(){
+		builder = Builder.instance;
 		description.text = mainContruct.GetComponent<MainConstruct>().constructDescription;
 	}
 

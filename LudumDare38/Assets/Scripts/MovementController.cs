@@ -26,20 +26,20 @@ public class MovementController : MonoBehaviour {
 
 	void Start(){
 		grapin.setPlayer (this);
-		grapin.gameObject.SetActive (false);
+		//grapin.gameObject.SetActive (false);
 	}
 
 	void Update(){
 		if (Input.GetMouseButtonDown (1)&&(!grabbing)) {
 			//click droit
-			grapin.transform.position = this.transform.position;
+			//grapin.transform.position = this.transform.position;
 			useGrab(camera.ScreenToWorldPoint (Input.mousePosition));
 		} 
 	}
 
 	void FixedUpdate () {
-		if (!canMove)
-			return;
+		//if (!canMove)
+		//	return;
 		if (Input.GetKey (KeyCode.Q)) {
 			anim.SetBool ("isWalking", true);
 			sprite.flipX = true;
@@ -57,7 +57,7 @@ public class MovementController : MonoBehaviour {
 		canMove=false;
 		grabbing = true;
 		finalPosition.z = 0f;
-		grapin.gameObject.SetActive (true);
+		//grapin.gameObject.SetActive (true);
 		grapin.setDestination (finalPosition);
 		grapin.setIsLaunch (true);//lance le grapin
 	}
@@ -66,7 +66,8 @@ public class MovementController : MonoBehaviour {
 		grabbing = false;
 		canMove = true;
 		grapin.setIsLaunch (false);
-		grapin.gameObject.SetActive (false);
+		grapin.transform.rotation = this.transform.rotation;
+		//grapin.gameObject.SetActive (false);
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {

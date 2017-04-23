@@ -91,15 +91,12 @@ public class Grapin : MonoBehaviour {
 		if (other.gameObject.tag =="Ground") {
 			destination = player.transform.position;
 			comeBack = true;
-<<<<<<< HEAD
-=======
 		}
 
 		if (other.gameObject.tag == "Player") {
 			if (isLaunch)
 				return;
 			isRight = !isRight;
->>>>>>> 8e47e62a5892296ac561a2a5bdba81a82218e169
 		}
 	}
 }

@@ -10,6 +10,8 @@ public class WorldController : MonoBehaviour {
 	public MineralPart mineralPart;
 	public GemPart gemPart;
 
+	public int worldConstructs = 0;
+
 	void Awake () {
 		setWorldParts();
 	}
@@ -123,5 +125,30 @@ public class WorldController : MonoBehaviour {
 			product += worldParts[i].getGemProduct();
 		}
 		return product;
+	}
+
+	private static WorldController s_Instance = null;
+
+    // This defines a static instance property that attempts to find the manager object in the scene and
+    // returns it to the caller.
+    public static WorldController instance
+    {
+        get
+        {
+            if (s_Instance == null)
+            {
+                // This is where the magic happens.
+                //  FindObjectOfType(...) returns the first AManager object in the scene.
+                s_Instance = FindObjectOfType(typeof(WorldController)) as WorldController;
+            }
+
+            // If it is still null, create a new instance
+            if (s_Instance == null)
+            {
+                GameObject obj = Instantiate(Resources.Load("WorldController") as GameObject);
+                s_Instance = obj.GetComponent<WorldController>();
+            }
+            return s_Instance;
+        }
 	}
 }

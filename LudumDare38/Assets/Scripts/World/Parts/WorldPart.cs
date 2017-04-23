@@ -15,6 +15,8 @@ public class WorldPart : MonoBehaviour {
 	private Builder builder;
 	private GameManager gameManager;
 
+	private WorldController worldController;
+
 	bool isSterile;
 	bool isOccuped;
 
@@ -29,6 +31,7 @@ public class WorldPart : MonoBehaviour {
 	void Awake () {
 		builder = Builder.instance;
 		gameManager = GameManager.instance;
+		worldController = WorldController.instance;
 		mainConstruct = mainEmptyConstruct;
 		secondaryConstruct = secondaryEmptyConstruct;
 		anim = GetComponent<Animator> ();
@@ -57,12 +60,14 @@ public class WorldPart : MonoBehaviour {
 		gameManager.consumneMineral(this.mainConstruct.getMineralCost());
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
 		builder.displayBuilderMenu();
+		worldController.worldConstructs++;
 	}
 
 	public void removeMainConstruct(){
 		DestroyImmediate(mainConstruct.gameObject);
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
+		worldController.worldConstructs--;
 	}
 
 	public void addSecondaryConstruct(SecondaryConstruct secondaryConstruct){

@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour {
 	float dayDuration = 5;
 	float startLastDay;
 
-
-
 	// Use this for initialization
 	void Start () {
 		oxygen = 0;
@@ -91,8 +89,21 @@ public class GameManager : MonoBehaviour {
 		gem-=value;
 	}
 
-
-
+	public void addOxygen(float val){
+		oxygen += val;
+	}
+	public void addWood(float val){
+		wood += val;
+	}
+	public void addMineral(float val){
+		mineral += val;
+	}
+	public void addEnergy(float val){
+		energy += val;
+	}
+	public void addGem(float val){
+		gem += val;
+	}
 
 	public int getDay(){
 		return gameDay;

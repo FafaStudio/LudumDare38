@@ -12,6 +12,7 @@ public class Grapin : MonoBehaviour {
 
 	public GameObject shadow;
 	public GameObject poulpiSprite;
+	Animator poulpiAnim;
 
 	bool isLaunch=false;
 	bool comeBack=false;
@@ -20,10 +21,15 @@ public class Grapin : MonoBehaviour {
 
 	bool sens;
 
+	void Awake(){
+		poulpiAnim = GetComponentInChildren<Animator> ();
+	}
+
 	void Update () {
 		detectSensPlayer ();
 		if (!isLaunch) {
 			shadow.SetActive (true);
+			poulpiAnim.SetBool("isAttacking",false);
 			calculateDistanceFromPlayer ();
 			if (distanceFromPlayer > distanceMaxFromPlayer) {
 				movePoulpi ();
@@ -31,9 +37,11 @@ public class Grapin : MonoBehaviour {
 			return;
 		}
 		shadow.SetActive (false);
+		poulpiAnim.SetBool("isAttacking",true);
+		lookAtDestination ();
 		if(comeBack)
 			destination = player.transform.position;
-		transform.position = Vector3.MoveTowards(transform.position, destination, 5f*Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, destination, 8f*Time.deltaTime);
 		if (this.transform.position == destination) {
 			if (comeBack) {
 				comeBack = false;
@@ -46,14 +54,22 @@ public class Grapin : MonoBehaviour {
 		}
 	}
 
+	void lookAtDestination(){
+		var newRotation = Quaternion.LookRotation(transform.position - destination, Vector3.forward);
+		newRotation.x = 0.0f;
+		newRotation.y = 0.0f;
+		transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 8);
+		detectDirectionTarget ();
+	}
+
 	void movePoulpi(){
 		detectSensPlayer ();
 		if(sens){
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = true;
-			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 0.7f);
+			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 0.8f);
 		}	else	{
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
-			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -0.7f);
+			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -0.8f);
 		}
 	}
 
@@ -63,6 +79,14 @@ public class Grapin : MonoBehaviour {
 		}	else	{
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
 		}
+	}
+
+	public void detectDirectionTarget(){
+	//pour quand on utilise poulpi
+		if (destination.x > transform.position.x) 
+			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
+		else
+			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = true;
 	}
 
 	public void detectSensPlayer(){
@@ -94,6 +118,12 @@ public class Grapin : MonoBehaviour {
 		if (other.gameObject.tag =="Ground") {
 			destination = player.transform.position;
 			comeBack = true;
+		}
+
+		if (other.gameObject.tag =="Ressource") {
+			destination = player.transform.position;
+			comeBack = true;
+			other.transform.parent = this.transform;
 		}
 
 		if (other.gameObject.tag == "Player") {

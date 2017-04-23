@@ -24,17 +24,11 @@ public class WorldPart : MonoBehaviour {
 	float energieMultiplicator;
 	float gemMultiplicator;
 
-	// Use this for initialization
 	void Awake () {
 		builder = Builder.instance;
 		gameManager = GameManager.instance;
 		mainConstruct = mainEmptyConstruct;
 		secondaryConstruct = secondaryEmptyConstruct;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public bool canMainConstruct(){

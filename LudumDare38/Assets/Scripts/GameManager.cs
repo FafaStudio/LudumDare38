@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 	float energy;
 	float gem;
 
+	public Texture2D cursorTexture;
+	CursorMode cursorMode = CursorMode.ForceSoftware;
+	Vector2 hotSpot = Vector2.zero;
+
 	public WorldController worldController;
 
 	int gameDay = 0;
@@ -26,7 +30,11 @@ public class GameManager : MonoBehaviour {
 		energy = 50;
 		gem = 0;
 		startLastDay = Time.time;
+<<<<<<< HEAD
 		InvokeRepeating("getSecondeResources", 0, 1);
+=======
+		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+>>>>>>> 9cc9432e4eeacae30c6f8848aee9be3a7d1503e7
 	}
 	
 	// Update is called once per frame

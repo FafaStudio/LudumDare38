@@ -54,7 +54,7 @@ public class MovementController : MonoBehaviour {
 	IEnumerator tempoGrab(){
 		// pour empecher le trigger lorsque je lance poulpi
 		grapin.setTriggerOff (true);
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.05f);
 		grapin.setTriggerOff (false);
 	}
 

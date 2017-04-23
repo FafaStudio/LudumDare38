@@ -13,7 +13,7 @@ public class Grapin : MonoBehaviour {
 	void Update () {
 		if (!isLaunch)
 			return;
-		transform.position = Vector3.MoveTowards(transform.position, destination, 10f*Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, destination, 5f*Time.deltaTime);
 		if (this.transform.position == destination) {
 			destination = player.transform.position;
 		}
@@ -36,7 +36,10 @@ public class Grapin : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Player"){
+		if (coll.gameObject.tag == "Ground") {
+			print ("wow");
+		}
+		else if (coll.gameObject.tag == "Player"){
 			if (!triggerOff) {
 				player.endGrab ();
 			}

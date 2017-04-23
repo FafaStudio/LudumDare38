@@ -46,13 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BorderDestructor.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameManagerUI.cs" />
      <Compile Include="Assets\Scripts\Grapin.cs" />
      <Compile Include="Assets\Scripts\MovementController.cs" />
+     <Compile Include="Assets\Scripts\RessourceVolante.cs" />
      <Compile Include="Assets\Scripts\RessourcesUI.cs" />
      <Compile Include="Assets\Scripts\SkyspaceFX.cs" />
+     <Compile Include="Assets\Scripts\SpaceSpawner.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\UI\BuildingUI.cs" />
      <Compile Include="Assets\Scripts\UI\MainConstructUI.cs" />

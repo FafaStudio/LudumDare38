@@ -84,43 +84,43 @@ public class WorldController : MonoBehaviour {
 		return instance;
 	}
 
-	public int getDayOxygenProduct(){
-		int product = 0;
+	public float getDayOxygenProduct(){
+		float product = 0;
 		for (int i = 0; i < worldParts.Count; i++)
 		{
-			product = worldParts[i].getOxygenProduct();
+			product += worldParts[i].getOxygenProduct();
 		}
 		return product;
 	}
-	public int getDayWoodProduct(){
-		int product = 0;
+	public float getDayWoodProduct(){
+		float product = 0;
 		for (int i = 0; i < worldParts.Count; i++)
 		{
-			product = worldParts[i].getWoodProduct();
+			product += worldParts[i].getWoodProduct();
 		}
 		return product;
 	}
-	public int getDayMineralProduct(){
-		int product = 0;
+	public float getDayMineralProduct(){
+		float product = 0;
 		for (int i = 0; i < worldParts.Count; i++)
 		{
-			product = worldParts[i].getMineralProduct();
+			product += worldParts[i].getMineralProduct();
 		}
 		return product;
 	}
-	public int getDayEnergieProduct(){
-		int product = 0;
+	public float getDayEnergieProduct(){
+		float product = 0;
 		for (int i = 0; i < worldParts.Count; i++)
 		{
-			product = worldParts[i].getEnergieProduct();
+			product += worldParts[i].getEnergieProduct();
 		}
 		return product;
 	}
-	public int getDayGemProduct(){
-		int product = 0;
+	public float getDayGemProduct(){
+		float product = 0;
 		for (int i = 0; i < worldParts.Count; i++)
 		{
-			product = worldParts[i].getGemProduct();
+			product += worldParts[i].getGemProduct();
 		}
 		return product;
 	}

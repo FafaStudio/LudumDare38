@@ -15,11 +15,11 @@ public class WorldPart : MonoBehaviour {
 	bool isSterile;
 	bool isOccuped;
 
-	int oxygenMultiplicator;
-	int woodMultiplicator;
-	int mineralMultiplicator;
-	int energieMultiplicator;
-	int gemMultiplicator;
+	float oxygenMultiplicator;
+	float woodMultiplicator;
+	float mineralMultiplicator;
+	float energieMultiplicator;
+	float gemMultiplicator;
 
 	// Use this for initialization
 	void Awake () {
@@ -59,25 +59,25 @@ public class WorldPart : MonoBehaviour {
 		secondaryConstruct = secondaryEmptyConstruct;
 	}
 
-    public void setOxygenMultiplicator(int product){oxygenMultiplicator = product;}
-	public void setWoodMultiplicator(int product){woodMultiplicator = product;}
-	public void setMineralMultiplicator(int product){mineralMultiplicator = product;}
-	public void setEnergieMultiplicator(int product){energieMultiplicator = product;}
-	public void setGemMultiplicator(int product){gemMultiplicator = product;}
+    public void setOxygenMultiplicator(float product){oxygenMultiplicator = product;}
+	public void setWoodMultiplicator(float product){woodMultiplicator = product;}
+	public void setMineralMultiplicator(float product){mineralMultiplicator = product;}
+	public void setEnergieMultiplicator(float product){energieMultiplicator = product;}
+	public void setGemMultiplicator(float product){gemMultiplicator = product;}
 
-	public int getOxygenProduct(){
+	public float getOxygenProduct(){
 		return oxygenMultiplicator * mainConstruct.getOxygenProduction() - secondaryConstruct.getOxygenCost();
 	}
-	public int getWoodProduct(){
+	public float getWoodProduct(){
 		return woodMultiplicator * mainConstruct.getWoodProduction();
 	}
-	public int getMineralProduct(){
+	public float getMineralProduct(){
 		return mineralMultiplicator * mainConstruct.getMineralProduction();
 	}
-	public int getEnergieProduct(){
+	public float getEnergieProduct(){
 		return energieMultiplicator * mainConstruct.getEnergieProduction() - mainConstruct.getEnergyCost() - secondaryConstruct.getEnergyCost();
 	}
-	public int getGemProduct(){
+	public float getGemProduct(){
 		return gemMultiplicator * mainConstruct.getGemProduction() ;
 	}
 

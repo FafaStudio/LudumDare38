@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour {
 
 	Camera camera;
+	public float speed;
 	public Transform mainCharacter;
 
 	void Awake () {
@@ -14,7 +15,7 @@ public class CameraManager : MonoBehaviour {
 	void Update () {
 	//positif : je dezoom
 	//negatif : je zoom
-		camera.orthographicSize -= Input.GetAxis ("Mouse ScrollWheel")*0.8f;
+		camera.orthographicSize -= Input.GetAxis ("Mouse ScrollWheel")*speed;
 		if (camera.orthographicSize > 7)
 			camera.orthographicSize = 7;
 		else if (camera.orthographicSize < 4) {

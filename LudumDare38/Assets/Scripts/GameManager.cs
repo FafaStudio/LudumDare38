@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	int oxygen;
-	int wood;
-	int mineral;
-	int energy;
-	int gem;
+	float oxygen;
+	float wood;
+	float mineral;
+	float energy;
+	float gem;
 
 	public WorldController worldController;
 
@@ -45,19 +45,19 @@ public class GameManager : MonoBehaviour {
 		gem += worldController.getDayGemProduct();
 	}
 
-	public int getOxygen(){
+	public float getOxygen(){
 		return oxygen;
 	}
-	public int getWood(){
+	public float getWood(){
 		return wood;
 	}
-	public int getMineral(){
+	public float getMineral(){
 		return mineral;
 	}
-	public int getEnergy(){
+	public float getEnergy(){
 		return energy;
 	}
-	public int getGem(){
+	public float getGem(){
 		return gem;
 	}
 	public int getDay(){

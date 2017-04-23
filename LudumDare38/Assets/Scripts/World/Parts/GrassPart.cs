@@ -6,10 +6,10 @@ public class GrassPart : WorldPart {
 	
 	// Use this for initialization
 	void Start () {
-		setOxygenMultiplicator(10);
-		setWoodMultiplicator(10);
-		setMineralMultiplicator(0);
-		setEnergieMultiplicator(0);
+		setOxygenMultiplicator(2);
+		setWoodMultiplicator(2);
+		setMineralMultiplicator(0.75f);
+		setEnergieMultiplicator(1);
 		setGemMultiplicator(0);
 	}
 	

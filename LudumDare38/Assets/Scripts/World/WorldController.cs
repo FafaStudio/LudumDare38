@@ -23,9 +23,9 @@ public class WorldController : MonoBehaviour {
 		float partNumber = 24;
 		int miniGrassNumber = 3;
 		int miniMineralNumber = 3;
-		float grassNumber = 10;
-		float mineralNumber = 10;
-		float gemNumber = 4;
+		float gemNumber = Random.Range(2,5);
+		float grassNumber = Random.Range(4,17);
+		float mineralNumber =partNumber - gemNumber - grassNumber;
 		int sterileNumber = 4;
 
 		for (int i = 0; i < 6; i++)//on assure un spawn decent
@@ -45,12 +45,20 @@ public class WorldController : MonoBehaviour {
 
 		for (int i = 6; i < partNumber; i++)
 		{
-			float partRandomValue = Random.value;
-			if((mineralNumber == 0 && gemNumber == 0) || (partRandomValue < grassNumber/(partNumber - i) && grassNumber != 0)){
+			int partRandomValue;
+			if(grassNumber == 0){
+				partRandomValue = Random.Range(1,3);
+			}	else	if(mineralNumber == 0 || gemNumber == 0){
+				partRandomValue = Random.Range(0,2);
+			}	else	{
+				partRandomValue = Random.Range(0,3);
+			}
+
+			if((mineralNumber == 0 && gemNumber == 0) || (partRandomValue == 0 && grassNumber != 0)){
 				worldParts.Add(instantiateWorldPart(i, grassPart));
 				//on add un grass
 				grassNumber--;
-			}	else if(gemNumber == 0 || (partRandomValue < grassNumber + mineralNumber/(partNumber - i) && mineralNumber != 0)){
+			}	else if(gemNumber == 0 || (partRandomValue == 1 && mineralNumber != 0)){
 				worldParts.Add(instantiateWorldPart(i, mineralPart));
 				//on add un mineral
 				mineralNumber--;

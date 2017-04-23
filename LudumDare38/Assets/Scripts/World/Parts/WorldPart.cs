@@ -82,9 +82,20 @@ public class WorldPart : MonoBehaviour {
 	}
 
 
-	public void setIsSterile(bool boolean){isSterile = boolean;}
+	public void setIsSterile(bool boolean){
+		isSterile = boolean;
+		if(isSterile){
+			sterilize();
+		}
+	}
 
 	public bool getIsSterile(){
 		return isSterile;
+	}
+	public void sterilize(){
+		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("MORTADELLE");
+	}
+	public virtual void dismissSterile(){
+
 	}
 }

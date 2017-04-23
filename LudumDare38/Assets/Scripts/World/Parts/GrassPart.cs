@@ -17,4 +17,7 @@ public class GrassPart : WorldPart {
 	void Update () {
 		
 	}
+	public override void dismissSterile(){
+		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("HERBE");
+	}
 }

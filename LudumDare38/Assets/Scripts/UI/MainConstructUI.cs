@@ -13,7 +13,9 @@ public class MainConstructUI : MonoBehaviour {
 
 	public void instantiate(){
 		if(builder.getActualPart().canMainConstruct()){
-			builder.getActualPart().addMainConstruct(mainContruct);
+			if(mainContruct.GetComponent<MainConstruct>().haveEnoughtResources()){
+				builder.getActualPart().addMainConstruct(mainContruct);
+			}
 		}
 	}
 }

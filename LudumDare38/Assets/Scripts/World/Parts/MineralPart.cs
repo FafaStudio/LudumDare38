@@ -6,11 +6,7 @@ public class MineralPart : WorldPart {
 
 	// Use this for initialization
 	void Start () {
-		setOxygenMultiplicator(0);
-		setWoodMultiplicator(0);
-		setMineralMultiplicator(10);
-		setEnergieMultiplicator(10);
-		setGemMultiplicator(0);
+		setMultiplicator();
 	}
 	
 	// Update is called once per frame
@@ -20,5 +16,13 @@ public class MineralPart : WorldPart {
 
 	public override void dismissSterile(){
 		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("MINERAL");
+		setMultiplicator();
+	}
+	public override void setMultiplicator(){
+		setOxygenMultiplicator(0.5f);
+		setWoodMultiplicator(1);
+		setMineralMultiplicator(2);
+		setEnergieMultiplicator(2);
+		setGemMultiplicator(0.5f);
 	}
 }

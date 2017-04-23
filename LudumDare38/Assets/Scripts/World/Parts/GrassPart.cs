@@ -6,11 +6,7 @@ public class GrassPart : WorldPart {
 	
 	// Use this for initialization
 	void Start () {
-		setOxygenMultiplicator(2);
-		setWoodMultiplicator(2);
-		setMineralMultiplicator(0.75f);
-		setEnergieMultiplicator(1);
-		setGemMultiplicator(0);
+		setMultiplicator();
 	}
 	
 	// Update is called once per frame
@@ -19,5 +15,13 @@ public class GrassPart : WorldPart {
 	}
 	public override void dismissSterile(){
 		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("HERBE");
+		setMultiplicator();
+	}
+	public override void setMultiplicator(){
+		setOxygenMultiplicator(2);
+		setWoodMultiplicator(2);
+		setMineralMultiplicator(0.75f);
+		setEnergieMultiplicator(1);
+		setGemMultiplicator(0);
 	}
 }

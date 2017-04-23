@@ -7,6 +7,9 @@ public class SecondaryConstruct : MonoBehaviour {
 	public string constructDescription;
 	int constructLevel = 0;
 
+	int durability = 5;
+	int actualDurability = 5;
+
 	[SerializeField]
 	public SecondaryConstructScriptableObject upgrades;
 
@@ -20,6 +23,13 @@ public class SecondaryConstruct : MonoBehaviour {
 		
 	}
 
+	public bool canBeReapair(){
+		return this.actualDurability != durability;
+	}
+
+	public void repair(){
+		
+	}
 
 	public int getEnergyCost(){
 		return upgrades.secondaryConstructUpgrades[constructLevel].energyCost;

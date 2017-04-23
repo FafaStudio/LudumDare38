@@ -12,6 +12,9 @@ public class WorldPart : MonoBehaviour {
 	public MainConstruct mainEmptyConstruct;
 	public SecondaryConstruct secondaryEmptyConstruct;
 
+	private Builder builder;
+	private GameManager gameManager;
+
 	bool isSterile;
 	bool isOccuped;
 
@@ -23,6 +26,8 @@ public class WorldPart : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		builder = Builder.instance;
+		gameManager = GameManager.instance;
 		mainConstruct = mainEmptyConstruct;
 		secondaryConstruct = secondaryEmptyConstruct;
 	}
@@ -43,20 +48,27 @@ public class WorldPart : MonoBehaviour {
 	public void addMainConstruct(GameObject mainConstruct){
 		GameObject instance = Instantiate(mainConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
 		this.mainConstruct = instance.GetComponent<MainConstruct>();
+		gameManager.consumneWood(this.mainConstruct.getWoodCost());
+		gameManager.consumneMineral(this.mainConstruct.getMineralCost());
+		gameManager.consumneGem(this.mainConstruct.getGemCost());
+		builder.displayBuilderMenu();
 	}
 
 	public void removeMainConstruct(){
 		DestroyImmediate(mainConstruct.gameObject);
 		mainConstruct = mainEmptyConstruct;
+		builder.displayBuilderMenu();
 	}
 
 	public void addSecondaryConstruct(SecondaryConstruct secondaryConstruct){
 		this.secondaryConstruct = secondaryConstruct;
+		builder.displayBuilderMenu();
 	}
 
 	public void removeSecondaryConstruct(){
 		DestroyImmediate(secondaryConstruct.gameObject);
 		secondaryConstruct = secondaryEmptyConstruct;
+		builder.displayBuilderMenu();
 	}
 
     public void setOxygenMultiplicator(float product){oxygenMultiplicator = product;}
@@ -94,8 +106,17 @@ public class WorldPart : MonoBehaviour {
 	}
 	public void sterilize(){
 		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("MORTADELLE");
+		setSterileMultiplicator();
 	}
-	public virtual void dismissSterile(){
 
+	private void setSterileMultiplicator(){
+		setOxygenMultiplicator(0.5f);
+		setWoodMultiplicator(0.5f);
+		setMineralMultiplicator(0.75f);
+		setEnergieMultiplicator(0.75f);
+		setGemMultiplicator(0);
 	}
+
+	public virtual void dismissSterile(){}
+	public virtual void setMultiplicator(){}
 }

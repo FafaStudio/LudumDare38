@@ -8,13 +8,15 @@ public class MainConstruct : MonoBehaviour
 	public string constructDescription;
 	int constructLevel = 0;
 
+	GameManager gameManager;
+
 	[SerializeField]
 	public MainConstructScriptableObject upgrades;
 
     // Use this for initialization
     void Awake()
     {
-		
+		gameManager = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -22,6 +24,21 @@ public class MainConstruct : MonoBehaviour
     {
 
     }
+
+	public bool haveEnoughtResources(){
+		gameManager = GameManager.instance;
+		return upgrades.mainConstructUpgrades[constructLevel].upgradeWoodCost <= gameManager.getWood()
+		&& upgrades.mainConstructUpgrades[constructLevel].upgradeMineralCost <= gameManager.getMineral()
+		&& upgrades.mainConstructUpgrades[constructLevel].upgradeGemCost <= gameManager.getGem();
+	}
+
+	public bool canBeUpgraded(){
+		return upgrades.mainConstructUpgrades.Count > constructLevel;
+	}
+
+	public void upgrade(){
+
+	}
 
 	public int getOxygenProduction(){
 		return upgrades.mainConstructUpgrades[constructLevel].oxygenBaseProduction;
@@ -37,6 +54,15 @@ public class MainConstruct : MonoBehaviour
 	}
 	public int getGemProduction(){
 		return upgrades.mainConstructUpgrades[constructLevel].gemBaseProduction;
+	}
+	public int getWoodCost(){
+		return upgrades.mainConstructUpgrades[constructLevel].upgradeWoodCost;
+	}
+	public int getMineralCost(){
+		return upgrades.mainConstructUpgrades[constructLevel].upgradeMineralCost;
+	}
+	public int getGemCost(){
+		return upgrades.mainConstructUpgrades[constructLevel].upgradeGemCost;
 	}
 
 	public int getEnergyCost(){

@@ -18,7 +18,10 @@ public class Grapin : MonoBehaviour {
 
 	bool isRight = true;
 
+	bool sens;
+
 	void Update () {
+		detectSensPlayer ();
 		if (!isLaunch) {
 			shadow.SetActive (true);
 			calculateDistanceFromPlayer ();
@@ -44,11 +47,7 @@ public class Grapin : MonoBehaviour {
 	}
 
 	void movePoulpi(){
-		
-		bool sens = player.transform.rotation.eulerAngles.z > transform.rotation.eulerAngles.z;
-		if(Mathf.Abs(player.transform.rotation.eulerAngles.z - transform.rotation.eulerAngles.z) > 180){
-				sens = !sens;
-		}
+		detectSensPlayer ();
 		if(sens){
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = true;
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 0.7f);
@@ -56,33 +55,23 @@ public class Grapin : MonoBehaviour {
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -0.7f);
 		}
+	}
 
-		/*float playerRotation;
-		float poulpiRotation;
-		if (this.transform.rotation.z < 0) 
-			poulpiRotation = 360 + this.transform.rotation.z; 
-		 else
-			poulpiRotation = this.transform.rotation.z;
-		
-		if (player.transform.rotation.z < 0) 
-			playerRotation = 360 + player.transform.rotation.z;
-		else
-			playerRotation = player.transform.rotation.z;
-			
-		float calculAngle = playerRotation + poulpiRotation;
-
-		if(calculAngle>this.transform.rotation.z)
-			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -1f);
-		else
-			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 1f);*/
-			/* 
-		if (isRight) {
-			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
-			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), -0.7f);
-		}else {
+	public void flipSprite(){
+		if(sens){
 			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = true;
-			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 0.7f);
-		}*/
+		}	else	{
+			poulpiSprite.GetComponent<SpriteRenderer> ().flipX = false;
+		}
+	}
+
+	public void detectSensPlayer(){
+	//le player est a droite ou a gauche 
+		sens = player.transform.rotation.eulerAngles.z > transform.rotation.eulerAngles.z;
+		if(Mathf.Abs(player.transform.rotation.eulerAngles.z - transform.rotation.eulerAngles.z) > 180){
+			sens = !sens;
+		}
+		flipSprite ();
 	}
 
 	public void calculateDistanceFromPlayer(){

@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Assets/Scripts/World/WorldController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MovementController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Grapin.cs" Line="84" Column="3" />
+      <File FileName="Assets/Scripts/Grapin.cs" Line="52" Column="62" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SpawnerManager.cs" Line="1" Column="1" />

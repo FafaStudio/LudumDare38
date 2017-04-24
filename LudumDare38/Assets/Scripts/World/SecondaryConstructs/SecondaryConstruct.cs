@@ -36,11 +36,11 @@ public class SecondaryConstruct : MonoBehaviour {
 	}
 
 	public int getEnergyCost(){
-		return upgrades.secondaryConstructUpgrades[constructLevel].energyCost;
+		return upgrades.secondaryConstructUpgrades.energyCost;
 	}
 
 
 	public int getOxygenCost(){
-		return upgrades.secondaryConstructUpgrades[constructLevel].oxygenCost;
+		return upgrades.secondaryConstructUpgrades.oxygenCost;
 	}
 }

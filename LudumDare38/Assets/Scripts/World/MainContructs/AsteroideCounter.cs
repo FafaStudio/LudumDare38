@@ -11,12 +11,18 @@ public class AsteroideCounter : MonoBehaviour {
 	void Awake () {
 		worldController = WorldController.instance;
 		mainConstruct = GetComponent<MainConstruct>();
-		applyEffect();
+		StartCoroutine(WaitAtAwake());
 	}
 	
 	void OnDestroy() {
 		removeEffect();
 	}
+
+	IEnumerator WaitAtAwake()
+    {
+        yield return new WaitForSeconds(1);
+        applyEffect();
+    }
 
 	private void applyEffect(){
 		int index = mainConstruct.getPart().getIndex();

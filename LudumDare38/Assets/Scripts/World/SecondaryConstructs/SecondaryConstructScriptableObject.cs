@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SecondaryConstructScriptableObject : ScriptableObject {
 	[SerializeField]
-	public List<SecondaryConstructUpgrades> secondaryConstructUpgrades;
+	public SecondaryConstructUpgrades secondaryConstructUpgrades;
 }
 [System.Serializable] 
 public class SecondaryConstructUpgrades{
-	public int upgradeWoodCost;
-	public int upgradeMineralCost;
-	public int upgradeGemCost;
+	public int buildWoodCost;
+	public int buildMineralCost;
+	public int buildGemCost;
 	public int oxygenCost;
 	public int energyCost;
 }

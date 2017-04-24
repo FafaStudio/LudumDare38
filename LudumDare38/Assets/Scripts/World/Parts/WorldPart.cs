@@ -61,6 +61,7 @@ public class WorldPart : MonoBehaviour {
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
 		builder.displayBuilderMenu();
 		worldController.worldConstructs++;
+		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
 	public void removeMainConstruct(){
@@ -68,6 +69,7 @@ public class WorldPart : MonoBehaviour {
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
 		worldController.worldConstructs--;
+		MusicManager.instance.GetComponent<MusicManager> ().verifyPiste (worldController.worldConstructs);
 	}
 
 	public void addSecondaryConstruct(SecondaryConstruct secondaryConstruct){

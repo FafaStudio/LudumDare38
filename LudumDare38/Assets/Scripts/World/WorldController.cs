@@ -17,7 +17,6 @@ public class WorldController : MonoBehaviour {
 	}
 		
 	void Update () {
-		
 	}
 
 	private void setWorldParts(){

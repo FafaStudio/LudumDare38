@@ -62,6 +62,7 @@ public class WorldPart : MonoBehaviour {
 		GameObject instance = Instantiate(mainConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
 		this.mainConstruct = instance.GetComponent<MainConstruct>();
 		instance.GetComponent<MainConstruct>().setPart (this);
+		launchConstructionSound(instance.GetComponent<MainConstruct>());
 		gameManager.consumneWood(this.mainConstruct.getWoodCost());
 		gameManager.consumneMineral(this.mainConstruct.getMineralCost());
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
@@ -73,7 +74,33 @@ public class WorldPart : MonoBehaviour {
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
+	public void launchConstructionSound(MainConstruct batiment){
+		switch (batiment.categorie) {
+		case MainConstruct.categorieBuilding.usine:
+			SoundManager.instance.launchSound ("constructionUsine");
+			break;
+		case MainConstruct.categorieBuilding.defense:
+			SoundManager.instance.launchSound ("constructionDefense");
+			break;
+		case MainConstruct.categorieBuilding.fusée:
+			SoundManager.instance.launchSound ("constructionFusée");
+			break;
+		}
+	}
+
 	public void removeMainConstruct(){
+		if(mainConstruct.constructName == "Home"){
+			worldController.setIsHomeBuild(false);
+		}
+		Destroy(mainConstruct.gameObject);
+		mainConstruct = mainEmptyConstruct;
+		builder.displayBuilderMenu();
+		worldController.worldConstructs--;
+		SoundManager.instance.launchSound ("removeMainUI");
+		MusicManager.instance.GetComponent<MusicManager> ().verifyPiste (worldController.worldConstructs);
+	}
+
+	public void DestroyMainConstruct(){
 		if(mainConstruct.constructName == "Home"){
 			worldController.setIsHomeBuild(false);
 		}
@@ -86,7 +113,7 @@ public class WorldPart : MonoBehaviour {
 
 	public void destroyConstruction(){
 		if (mainConstruct.constructName !="Empty") {
-			removeMainConstruct ();
+			DestroyMainConstruct ();
 		}
 		if (secondaryConstruct.constructName !="Empty") {
 			removeSecondaryConstruct ();

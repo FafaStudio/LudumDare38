@@ -8,6 +8,9 @@ public class MainConstruct : MonoBehaviour
 	public string constructDescription;
 	int constructLevel = 0;
 
+	public enum categorieBuilding{usine, secondaire, objet, fusée, defense};
+	public categorieBuilding categorie;
+
 	GameManager gameManager;
 
 	WorldPart partLinked;

@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\MusicManager.cs" />
      <Compile Include="Assets\Scripts\RessourceVolante.cs" />
      <Compile Include="Assets\Scripts\RessourcesUI.cs" />
+     <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\SpaceSpawner.cs" />
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\UI\BuildingUI.cs" />

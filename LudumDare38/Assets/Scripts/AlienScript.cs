@@ -8,6 +8,9 @@ public class AlienScript : MonoBehaviour {
 	Vector3 origin;
 	Vector3 objective;
 
+	float chronoSound = 0f;
+	float maxChronoSound = 0f;
+
 	void Start () {
 		origin = transform.position;
 		findWorldPart();
@@ -17,8 +20,10 @@ public class AlienScript : MonoBehaviour {
 	}
 
 	void Update () {
-		if(transform.position != objective){
-			goToWorldPart();
+		if (transform.position != objective) {
+			goToWorldPart ();
+		} else {
+			playSound ();
 		}
 	}
 	private void findWorldPart(){
@@ -29,8 +34,18 @@ public class AlienScript : MonoBehaviour {
 		transform.position = Vector3.MoveTowards(transform.position, objective, 8f*Time.deltaTime);
 	}
 
+	public void playSound(){
+		chronoSound -= Time.deltaTime;
+		if (chronoSound <= 0f) {
+			SoundManager.instance.launchSound ("menaceGuepe");
+			maxChronoSound = 8f;
+			chronoSound = maxChronoSound;
+		}
+	}
+
 	public void runAway(){
 		objective = origin;
+		SpaceSpawner.instance.setHasSpawnedalien (false);
 		Destroy(gameObject, 5);
 	}
 

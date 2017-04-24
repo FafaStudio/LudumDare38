@@ -75,6 +75,7 @@ public class RessourceVolante : MonoBehaviour {
 	}
 
 	public void gainRessource(){
+		SoundManager.instance.launchSound ("getRessource");
 		switch (currentRessource) {
 		case ressource.energy:
 			GameManager.instance.addEnergy (100f);

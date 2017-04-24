@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour {
 		if(Time.time - startLastDay >= dayDuration){
 			//newDay();
 			startLastDay = Time.time;
+			if (worldController.getEruptionNumber ()!=0) {
+				worldController.endEruption ();
+			}
+			SpaceSpawner.instance.trySpawnEruption ();
 			gameDay++;
 		}
 	}

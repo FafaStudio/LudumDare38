@@ -6,6 +6,7 @@ public class SpaceSpawner : MonoBehaviour {
 
 	public bool spawnAlien;
 	public bool spawnAsteroid;
+	public bool spawnEruption;
 
 	public GameObject ressourceVolante;
 
@@ -16,6 +17,7 @@ public class SpaceSpawner : MonoBehaviour {
 
 	float maxTimeBetweenRessource;
 	float timePassed;
+
 
 	void Start () {
 		maxTimeBetweenRessource = Random.Range (1f, 5f);
@@ -43,6 +45,10 @@ public class SpaceSpawner : MonoBehaviour {
 			spawnAsteroid = false;
 			spawnMenace ("Asteroid");
 		}
+		if (spawnEruption) {
+			spawnEruption = false;
+			spawnMenace ("Eruption");
+		}
 			
 		if (timePassed <= 0) {
 			InstantiateObject (ressourceVolante);
@@ -60,7 +66,17 @@ public class SpaceSpawner : MonoBehaviour {
 		} else if (menace == "Asteroid") {
 			InstantiateObject (asteroid);
 		} else if (menace == "Eruption") {
-			//InstantiateObject (alien);
+			WorldController.instance.launchPartEruption (0);
+		}
+	}
+
+	public void trySpawnEruption(){
+		int random = (int)Random.Range (0f, 11f);
+		if (random <= 1) {
+			spawnMenace ("Eruption");
+			spawnMenace ("Eruption");
+		}else if (random <= 3) {
+			spawnMenace ("Eruption");
 		}
 	}
 

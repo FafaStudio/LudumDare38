@@ -18,6 +18,8 @@ public class WorldPart : MonoBehaviour {
 
 	private WorldController worldController;
 
+	public GameObject eruptionParticleEffect;
+
 	int alienCounters = 0;
 	int asteroideCounters = 0;
 
@@ -43,6 +45,20 @@ public class WorldPart : MonoBehaviour {
 		mainConstruct = mainEmptyConstruct;
 		secondaryConstruct = secondaryEmptyConstruct;
 		anim = GetComponent<Animator> ();
+		eruptionParticleEffect.SetActive (false);
+		//eruptionParticleEffect.GetComponent<ParticleSystem>().startLifetime += 
+	}
+
+	public void launchEruption(){
+		eruptionParticleEffect.SetActive (true);
+		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Play();
+	}
+
+	public void stopEruption(){
+		destroyConstruction ();
+		sterilize ();
+		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
+		eruptionParticleEffect.SetActive (false);
 	}
 
 	public void launchSelectedAnimation(){

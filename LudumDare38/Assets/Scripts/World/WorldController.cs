@@ -10,17 +10,47 @@ public class WorldController : MonoBehaviour {
 	public MineralPart mineralPart;
 	public GemPart gemPart;
 
+	List<WorldPart> eruptionPart;
+
 	public MenuUI menuUI;
 
 	public int worldConstructs = 0;
 	private bool isHomeBuild = false;
 
 	void Awake () {
+		eruptionPart = new List<WorldPart> ();
 		setWorldParts();
 		menuUI.setActive(isHomeBuild);
 	}
 		
-	void Update () {
+	void Start () {
+	}
+
+	public int launchPartEruption(int indicePassage){
+		int chooseRandom = (int)Random.Range (0f, worldParts.Count);
+		if (indicePassage == worldParts.Count) {
+			eruptionPart.Add (worldParts [chooseRandom]);
+			worldParts [chooseRandom].launchEruption ();
+			return 0;
+		}
+		if (worldParts [chooseRandom].getIsSterile ()||eruptionPart.Contains(worldParts[chooseRandom])) {
+			return launchPartEruption (indicePassage++);
+		} else {
+			eruptionPart.Add (worldParts [chooseRandom]);
+			worldParts [chooseRandom].launchEruption ();
+			return 1;
+		}
+	}
+
+	public void endEruption(){
+		for (int i = 0; i < eruptionPart.Count; i++) {
+			eruptionPart [i].stopEruption ();
+		}
+		eruptionPart.Clear ();
+	}
+
+	public int getEruptionNumber(){
+		return eruptionPart.Count;
 	}
 
 	private void setWorldParts(){

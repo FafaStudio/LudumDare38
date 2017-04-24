@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 	public WorldController worldController;
 
 	int gameDay = 0;
-	float dayDuration = 5;
+	float dayDuration = 120;
 	float startLastDay;
 
 	// Use this for initialization

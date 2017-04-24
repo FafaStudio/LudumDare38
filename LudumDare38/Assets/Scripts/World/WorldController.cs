@@ -10,10 +10,14 @@ public class WorldController : MonoBehaviour {
 	public MineralPart mineralPart;
 	public GemPart gemPart;
 
+	public MenuUI menuUI;
+
 	public int worldConstructs = 0;
+	private bool isHomeBuild = false;
 
 	void Awake () {
 		setWorldParts();
+		menuUI.setActive(isHomeBuild);
 	}
 		
 	void Update () {
@@ -124,6 +128,15 @@ public class WorldController : MonoBehaviour {
 			product += worldParts[i].getGemProduct();
 		}
 		return product;
+	}
+
+	public void setIsHomeBuild(bool boolean){
+		isHomeBuild = boolean;
+		menuUI.setActive(isHomeBuild);
+	}
+
+	public bool getIsHomeBuild(){
+		return isHomeBuild;
 	}
 
 	private static WorldController s_Instance = null;

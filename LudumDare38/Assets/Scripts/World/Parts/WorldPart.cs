@@ -61,6 +61,9 @@ public class WorldPart : MonoBehaviour {
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
 		builder.displayBuilderMenu();
 		worldController.worldConstructs++;
+		if(this.mainConstruct.constructName == "Home"){
+			worldController.setIsHomeBuild(true);
+		}
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
@@ -69,6 +72,9 @@ public class WorldPart : MonoBehaviour {
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
 		worldController.worldConstructs--;
+		if(mainConstruct.constructName == "Home"){
+			worldController.setIsHomeBuild(false);
+		}
 		MusicManager.instance.GetComponent<MusicManager> ().verifyPiste (worldController.worldConstructs);
 	}
 

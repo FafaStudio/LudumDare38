@@ -46,7 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\Asteroid.cs" />
+=======
+     <Compile Include="Assets\Scripts\AlienGenerator.cs" />
+     <Compile Include="Assets\Scripts\AlienScript.cs" />
+>>>>>>> 3be8e5c1f9c51eec9477757829fd057e16638bf5
      <Compile Include="Assets\Scripts\BorderDestructor.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
      <Compile Include="Assets\Scripts\DangerZone.cs" />
@@ -62,6 +67,7 @@
      <Compile Include="Assets\Scripts\SpawnerManager.cs" />
      <Compile Include="Assets\Scripts\UI\BuildingUI.cs" />
      <Compile Include="Assets\Scripts\UI\MainConstructUI.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuUI.cs" />
      <Compile Include="Assets\Scripts\UI\SecondaryConstructUI.cs" />
      <Compile Include="Assets\Scripts\UI\TemporaryConstrucUI.cs" />
      <Compile Include="Assets\Scripts\UI\WorldPartUI.cs" />

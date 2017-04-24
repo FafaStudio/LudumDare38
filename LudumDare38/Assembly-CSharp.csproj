@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Consumable\Alienicide.cs" />
      <Compile Include="Assets\Scripts\Consumable\Consumable.cs" />
+     <Compile Include="Assets\Scripts\Consumable\ConsumableScriptableObject.cs" />
      <Compile Include="Assets\Scripts\Consumable\OxygenSeed.cs" />
      <Compile Include="Assets\Scripts\Consumable\VolcanoPlug.cs" />
      <Compile Include="Assets\Scripts\DangerZone.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\Scripts\Tutorial\TutorialController.cs" />
      <Compile Include="Assets\Scripts\Tutorial\TutorialScriptableObject.cs" />
      <Compile Include="Assets\Scripts\UI\BuildingUI.cs" />
+     <Compile Include="Assets\Scripts\UI\ConsumableUI.cs" />
      <Compile Include="Assets\Scripts\UI\MainConstructUI.cs" />
      <Compile Include="Assets\Scripts\UI\MenuUI.cs" />
      <Compile Include="Assets\Scripts\UI\SecondaryConstructUI.cs" />
@@ -102,7 +104,11 @@
  <HintPath>/Applications/Unity5.5/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
+<<<<<<< HEAD
  <HintPath>/Applications/Unity5.5/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+=======
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+>>>>>>> 00219534201870071a8af702c5e9605a8c0dc8ff
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>/Applications/Unity5.5/Unity.app/Contents/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>

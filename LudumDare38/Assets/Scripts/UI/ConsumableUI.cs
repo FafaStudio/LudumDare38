@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SecondaryConstructUI : MonoBehaviour {
+public class ConsumableUI : MonoBehaviour {
 	public Builder builder;
 	public GameObject mainContruct;
-	SecondaryConstruct mainContructComponent;
+	Consumable mainContructComponent;
 	public Text description;
 	public Text buildName;
 	public Text buildOxygenCost;
@@ -16,7 +16,7 @@ public class SecondaryConstructUI : MonoBehaviour {
 	public Text buildGemCost;
 	void Awake(){
 		builder = Builder.instance;
-		mainContructComponent = mainContruct.GetComponent<SecondaryConstruct>();
+		mainContructComponent = mainContruct.GetComponent<Consumable>();
 
 		buildName.text = mainContructComponent.constructName;
 		description.text = mainContructComponent.constructDescription;
@@ -29,10 +29,8 @@ public class SecondaryConstructUI : MonoBehaviour {
 	}
 
 	public void instantiate(){
-		if(builder.getActualPart().canSecondaryConstruct()){
-			if(mainContructComponent.haveEnoughtResources()){
-				builder.getActualPart().addSecondaryConstruct(mainContruct);
-			}
+		if(mainContructComponent.canBeUse(builder.getActualPart())){
+			mainContructComponent.useItem(builder.getActualPart());
 		}
 	}
 }

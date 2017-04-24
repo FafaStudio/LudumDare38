@@ -140,9 +140,17 @@ public class WorldPart : MonoBehaviour {
 		}
 	}
 
-	public void addSecondaryConstruct(SecondaryConstruct secondaryConstruct){
-		this.secondaryConstruct = secondaryConstruct;
+	public void addSecondaryConstruct(GameObject secondaryConstruct){
+		GameObject instance = Instantiate(secondaryConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
+		this.secondaryConstruct = instance.GetComponent<SecondaryConstruct>();
+		instance.GetComponent<SecondaryConstruct>().setPart (this);
+		//launchConstructionSound(instance.GetComponent<SecondaryConstruct>());
+		gameManager.consumneWood(this.secondaryConstruct.getWoodCost());
+		gameManager.consumneMineral(this.secondaryConstruct.getMineralCost());
+		gameManager.consumneGem(this.secondaryConstruct.getGemCost());
 		builder.displayBuilderMenu();
+		worldController.worldConstructs++;
+		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
 	public void removeSecondaryConstruct(){

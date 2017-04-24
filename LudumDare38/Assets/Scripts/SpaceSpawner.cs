@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpaceSpawner : MonoBehaviour {
 
+	public bool spawnAlien;
+	public bool spawnAsteroid;
+
 	public GameObject ressourceVolante;
 
 	public GameObject asteroid;
@@ -31,6 +34,16 @@ public class SpaceSpawner : MonoBehaviour {
 
 	void Update () {
 		timePassed -= Time.deltaTime;
+
+		if (spawnAlien) {
+			spawnAlien = false;
+			spawnMenace ("Alien");
+		}
+		if (spawnAsteroid) {
+			spawnAsteroid = false;
+			spawnMenace ("Asteroid");
+		}
+			
 		if (timePassed <= 0) {
 			InstantiateObject (ressourceVolante);
 			maxTimeBetweenRessource = Random.Range (1f, 2f);

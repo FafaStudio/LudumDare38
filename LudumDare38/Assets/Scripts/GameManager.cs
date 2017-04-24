@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		oxygen = 1000;
-		wood = 1000;
-		mineral = 1000;
-		energy = 1000;
-		gem = 1000;
+		oxygen = 10000;
+		wood = 10000;
+		mineral = 10000;
+		energy = 10000;
+		gem = 10000;
 		startLastDay = Time.time;
 		InvokeRepeating("getSecondeResources", 0, 1);
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);

@@ -173,9 +173,9 @@ public class WorldPart : MonoBehaviour {
 
 	public void setIsSterile(bool boolean){
 		isSterile = boolean;
-		if(isSterile){
-			sterilize();
-		}
+		if (isSterile) {
+			sterilize ();
+		} 
 	}
 
 	public bool getIsSterile(){
@@ -194,9 +194,23 @@ public class WorldPart : MonoBehaviour {
 	public void alienize(GameObject alien){
 		this.isAliened = true;
 		this.alien = alien;
+		print (mainConstruct.name);
+		print (secondaryConstruct.name);
+		/*if (mainConstruct.name != "Empty") {
+			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.grey;
+		}
+		if (secondaryConstruct.name != "Empty") {
+			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.grey;
+		}*/
 	}
 
 	public void unalienize(){
+		/*if (mainConstruct.name != "Empty") {
+			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
+		}
+		if (secondaryConstruct.name != "Empty") {
+			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
+		}*/
 		this.isAliened = false;
 		this.alien.GetComponent<AlienScript>().runAway();
 		this.alien = null;

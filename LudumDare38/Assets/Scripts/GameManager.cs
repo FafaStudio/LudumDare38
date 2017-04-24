@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour {
 		InvokeRepeating("getSecondeResources", 0, 1);
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 	}
-	
+	//360 /dayDuration
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(Time.time - startLastDay >= dayDuration){
@@ -111,6 +112,10 @@ public class GameManager : MonoBehaviour {
 
 	public float getDayDuration(){
 		return dayDuration;
+	}
+
+	public float getTimePassed(){
+		return Time.time - startLastDay;
 	}
 
 

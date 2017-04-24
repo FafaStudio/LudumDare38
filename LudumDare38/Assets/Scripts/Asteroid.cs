@@ -34,6 +34,7 @@ public class Asteroid : MonoBehaviour {
 		if (transform.position != objective)
 			goToWorldPart ();
 		else {
+			SoundManager.instance.launchSound ("explosionAsteroid");
 			Destroy (this.gameObject);
 		}
 	}

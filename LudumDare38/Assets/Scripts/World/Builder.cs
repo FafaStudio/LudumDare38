@@ -34,6 +34,7 @@ public class Builder : MonoBehaviour {
 	}
 
 	public void displayBuilderMenu(){
+		worldPartUI.undisplayInterface();
 		if(actualPart.mainConstruct.name != "Empty"){
 			worldPartUI.displayInterfaceMain(actualPart.mainConstruct.canBeUpgraded());
 		}

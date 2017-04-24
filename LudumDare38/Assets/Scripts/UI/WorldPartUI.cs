@@ -10,6 +10,7 @@ public class WorldPartUI : MonoBehaviour {
 	public Button removeButton;
 	public Button repairButton;
 	public Button removeButtonSecondary;
+
 	
 	void Awake(){
 		builder = Builder.instance;

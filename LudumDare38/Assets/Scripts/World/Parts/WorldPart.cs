@@ -11,6 +11,7 @@ public class WorldPart : MonoBehaviour {
 
 	public MainConstruct mainEmptyConstruct;
 	public SecondaryConstruct secondaryEmptyConstruct;
+	public GameObject anchor;
 
 	private Builder builder;
 	private GameManager gameManager;
@@ -19,6 +20,10 @@ public class WorldPart : MonoBehaviour {
 
 	bool isSterile;
 	bool isOccuped;
+
+	bool isAliened = false;
+
+	GameObject alien;
 
 	float oxygenMultiplicator;
 	float woodMultiplicator;
@@ -69,21 +74,21 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void removeMainConstruct(){
+		if(mainConstruct.constructName == "Home"){
+			worldController.setIsHomeBuild(false);
+		}
 		Destroy(mainConstruct.gameObject);
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
 		worldController.worldConstructs--;
-		if(mainConstruct.constructName == "Home"){
-			worldController.setIsHomeBuild(false);
-		}
 		MusicManager.instance.GetComponent<MusicManager> ().verifyPiste (worldController.worldConstructs);
 	}
 
 	public void destroyConstruction(){
-		if (mainConstruct != null) {
+		if (mainConstruct.constructName !="Empty") {
 			removeMainConstruct ();
 		}
-		if (secondaryConstruct != null) {
+		if (secondaryConstruct.constructName !="Empty") {
 			removeSecondaryConstruct ();
 		}
 	}
@@ -106,18 +111,33 @@ public class WorldPart : MonoBehaviour {
 	public void setGemMultiplicator(float product){gemMultiplicator = product;}
 
 	public float getOxygenProduct(){
+		if(isAliened){
+			return -secondaryConstruct.getOxygenCost();
+		}
 		return oxygenMultiplicator * mainConstruct.getOxygenProduction() - secondaryConstruct.getOxygenCost();
 	}
 	public float getWoodProduct(){
+		if(isAliened){
+			return 0;
+		}
 		return woodMultiplicator * mainConstruct.getWoodProduction();
 	}
 	public float getMineralProduct(){
+		if(isAliened){
+			return 0;
+		}
 		return mineralMultiplicator * mainConstruct.getMineralProduction();
 	}
 	public float getEnergieProduct(){
+		if(isAliened){
+			return -mainConstruct.getEnergyCost() -secondaryConstruct.getEnergyCost();
+		}
 		return energieMultiplicator * mainConstruct.getEnergieProduction() - mainConstruct.getEnergyCost() - secondaryConstruct.getEnergyCost();
 	}
 	public float getGemProduct(){
+		if(isAliened){
+			return 0;
+		}
 		return gemMultiplicator * mainConstruct.getGemProduction() ;
 	}
 
@@ -135,6 +155,21 @@ public class WorldPart : MonoBehaviour {
 	public void sterilize(){
 		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("MORTADELLE");
 		setSterileMultiplicator();
+	}
+
+
+	public bool getIsAliened(){
+		return isAliened;
+	}
+	public void alienize(GameObject alien){
+		this.isAliened = true;
+		this.alien = alien;
+	}
+
+	public void unalienize(){
+		this.isAliened = false;
+		this.alien.GetComponent<AlienScript>().runAway();
+		this.alien = null;
 	}
 
 	private void setSterileMultiplicator(){

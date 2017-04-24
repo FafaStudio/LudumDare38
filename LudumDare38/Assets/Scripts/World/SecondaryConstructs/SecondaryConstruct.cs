@@ -28,7 +28,11 @@ public class SecondaryConstruct : MonoBehaviour {
 	}
 
 	public void repair(){
-		
+		durability++;
+	}
+
+	public void useDurability(){
+		durability--;
 	}
 
 	public int getEnergyCost(){

@@ -5,5 +5,11 @@ using UnityEngine;
 
 public class TutorialScriptableObject : ScriptableObject {
 	[SerializeField]
-	public List<string> listText;
+	public List<tutoPart> listText;
+}
+
+[System.Serializable]
+public class tutoPart{
+	public string text;
+	public bool waitActivation;
 }

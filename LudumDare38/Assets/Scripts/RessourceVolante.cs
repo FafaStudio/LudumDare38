@@ -75,6 +75,7 @@ public class RessourceVolante : MonoBehaviour {
 	}
 
 	public void gainRessource(){
+		TutorialController.instance.nextIfPosition(4);
 		SoundManager.instance.launchSound ("getRessource");
 		switch (currentRessource) {
 		case ressource.energy:

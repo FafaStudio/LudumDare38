@@ -41,10 +41,10 @@ public class MovementController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		
 		//if (!canMove)
 		//	return;
 		if (Input.GetKey (KeyCode.Q)) {
+			TutorialController.instance.nextIfPosition(2);
 			if(previousOrientation && isBlock){
 				return;
 			}
@@ -52,6 +52,7 @@ public class MovementController : MonoBehaviour {
 			sprite.flipX = true;
 			transform.RotateAround (new Vector3 (0f, 0f, 0f), new Vector3 (0f, 0f, 1f), 1f);
 		} else if (Input.GetKey (KeyCode.D)) {
+			TutorialController.instance.nextIfPosition(2);
 			if(!previousOrientation && isBlock){
 				return;
 			}

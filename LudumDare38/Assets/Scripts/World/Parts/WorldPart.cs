@@ -231,6 +231,9 @@ public class WorldPart : MonoBehaviour {
 		return alienCounters!=0;
 	}
 	public void addAlienCounter(){
+		if(isAliened){
+			unalienize();
+		}
 		alienCounters++;
 	}
 	public void removeAlienCounter(){

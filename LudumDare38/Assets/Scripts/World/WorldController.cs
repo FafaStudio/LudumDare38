@@ -132,6 +132,7 @@ public class WorldController : MonoBehaviour {
 	}
 
 	public void setIsHomeBuild(bool boolean){
+		TutorialController.instance.nextIfPosition(6);
 		isHomeBuild = boolean;
 		menuUI.setActive(isHomeBuild);
 	}

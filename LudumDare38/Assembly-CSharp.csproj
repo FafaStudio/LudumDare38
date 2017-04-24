@@ -76,8 +76,11 @@
      <Compile Include="Assets\Scripts\UI\TemporaryConstrucUI.cs" />
      <Compile Include="Assets\Scripts\UI\WorldPartUI.cs" />
      <Compile Include="Assets\Scripts\World\Builder.cs" />
+     <Compile Include="Assets\Scripts\World\MainContructs\AsteroideCounter.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\MainConstruct.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\MainConstructScriptableObject.cs" />
+     <Compile Include="Assets\Scripts\World\MainContructs\alienCounter.cs" />
+     <Compile Include="Assets\Scripts\World\Parts\AreaDetector.cs" />
      <Compile Include="Assets\Scripts\World\Parts\GemPart.cs" />
      <Compile Include="Assets\Scripts\World\Parts\GrassPart.cs" />
      <Compile Include="Assets\Scripts\World\Parts\MineralPart.cs" />

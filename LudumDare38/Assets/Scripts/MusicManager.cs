@@ -9,7 +9,11 @@ public class MusicManager : MonoBehaviour {
 
 	int prevConstructionNumber =0;
 
+	bool battleMusicIsLaunch=false;
+
 	public bool muteMusic=false;
+
+	float chronoBattleMusic = 10f;
 
 	void Start () {
 		for (int i = 1; i < piste.Length; i++) {
@@ -18,11 +22,31 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	void Update(){
+		if (battleMusicIsLaunch)
+			stopBattlePiste ();
+		detectEndMusic ();
 		fadeEffect ();
 		if (muteMusic) {
 			for (int i = 0; i < piste.Length; i++) {
 				piste [i].volume = 0;
 			}
+		}
+	}
+
+	public void detectEndMusic(){
+		for (int i = 0; i < piste.Length; i++) {
+			if (!piste [i].isPlaying){
+				launchMusic ();
+				return;
+			}
+
+		}
+	}
+
+	public void launchMusic(){
+		for (int i = 0; i < piste.Length; i++) {
+			piste [i].Stop ();
+			piste [i].Play ();
 		}
 	}
 
@@ -44,11 +68,23 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	public void launchBatuluPiste(){
-		piste [indicePiste - 1].volume = 0.1f;
+		if (battleMusicIsLaunch)
+			return;
+		battleMusicIsLaunch = true;
+		piste [5].volume = 0.1f;
+	}
+
+	public void stopBattlePiste(){
+		chronoBattleMusic -= Time.deltaTime;
+		if (chronoBattleMusic <= 0) {
+			removeBatuluPiste ();
+			chronoBattleMusic = 10f;
+		}
 	}
 
 	public void removeBatuluPiste(){
-		piste [indicePiste - 1].volume = 0f;
+		battleMusicIsLaunch = false;
+		piste [5].volume = 0f;
 	}
 
 	public void removePiste(){

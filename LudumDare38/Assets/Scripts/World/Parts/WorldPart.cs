@@ -56,6 +56,7 @@ public class WorldPart : MonoBehaviour {
 	public void addMainConstruct(GameObject mainConstruct){
 		GameObject instance = Instantiate(mainConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
 		this.mainConstruct = instance.GetComponent<MainConstruct>();
+		instance.GetComponent<MainConstruct>().setPart (this);
 		gameManager.consumneWood(this.mainConstruct.getWoodCost());
 		gameManager.consumneMineral(this.mainConstruct.getMineralCost());
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
@@ -65,11 +66,20 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void removeMainConstruct(){
-		DestroyImmediate(mainConstruct.gameObject);
+		Destroy(mainConstruct.gameObject);
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
 		worldController.worldConstructs--;
 		MusicManager.instance.GetComponent<MusicManager> ().verifyPiste (worldController.worldConstructs);
+	}
+
+	public void destroyConstruction(){
+		if (mainConstruct != null) {
+			removeMainConstruct ();
+		}
+		if (secondaryConstruct != null) {
+			removeSecondaryConstruct ();
+		}
 	}
 
 	public void addSecondaryConstruct(SecondaryConstruct secondaryConstruct){
@@ -78,7 +88,7 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void removeSecondaryConstruct(){
-		DestroyImmediate(secondaryConstruct.gameObject);
+		Destroy(secondaryConstruct.gameObject);
 		secondaryConstruct = secondaryEmptyConstruct;
 		builder.displayBuilderMenu();
 	}

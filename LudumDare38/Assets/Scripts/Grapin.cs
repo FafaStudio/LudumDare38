@@ -115,7 +115,7 @@ public class Grapin : MonoBehaviour {
 	}
 		
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject.tag =="Ground") {
+		if ((other.gameObject.tag =="Ground")||(other.gameObject.tag =="Menace")) {
 			destination = player.transform.position;
 			comeBack = true;
 		}

@@ -6,6 +6,8 @@ public class SpaceSpawner : MonoBehaviour {
 
 	public GameObject ressourceVolante;
 
+	public GameObject asteroid;
+
 	float maxTimeBetweenRessource;
 	float timePassed;
 
@@ -24,7 +26,12 @@ public class SpaceSpawner : MonoBehaviour {
 	}
 
 	public void InstantiateRessource(){
-		GameObject toInstantiate = Instantiate (ressourceVolante, this.transform.position, Quaternion.identity) as GameObject;
+		GameObject toInstantiate;
+		int testProba = (int)Random.Range (0f, 100f);
+		if (testProba > 30) 
+			toInstantiate = Instantiate (ressourceVolante, this.transform.position, Quaternion.identity) as GameObject;
+		else
+			toInstantiate = Instantiate (asteroid, this.transform.position, Quaternion.identity) as GameObject;
 		toInstantiate.transform.parent = this.transform;
 	}
 }

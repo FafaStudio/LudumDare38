@@ -2,18 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MusicManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/World/WorldController.cs" Line="13" Column="33" />
-      <File FileName="Assets/Scripts/MovementController.cs" Line="60" Column="40" />
-      <File FileName="Assets/Scripts/Grapin.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="117" Column="2" />
-      <File FileName="Assets/Scripts/CameraManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpawnerManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/World/Builder.cs" Line="41" Column="53" />
-      <File FileName="Assets/Scripts/World/Parts/WorldPart.cs" Line="64" Column="25" />
-      <File FileName="Assets/Scripts/World/Editor/MainConstructUpgradeEditorScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpaceSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RessourceVolante.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MusicManager.cs" Line="32" Column="40" />
+      <File FileName="Assets/Scripts/World/WorldController.cs" Line="32" Column="41" />
+      <File FileName="Assets/Scripts/MovementController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Grapin.cs" Line="118" Column="76" />
+      <File FileName="Assets/Scripts/SpaceSpawner.cs" Line="23" Column="49" />
+      <File FileName="Assets/Scripts/Asteroid.cs" Line="28" Column="44" />
+      <File FileName="Assets/Scripts/World/MainContructs/MainConstruct.cs" Line="28" Column="21" />
+      <File FileName="Assets/Scripts/World/Parts/WorldPart.cs" Line="91" Column="10" />
+      <File FileName="Assets/Scripts/MusicManager.cs" Line="76" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

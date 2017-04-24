@@ -10,6 +10,8 @@ public class MainConstruct : MonoBehaviour
 
 	GameManager gameManager;
 
+	WorldPart partLinked;
+
 	[SerializeField]
 	public MainConstructScriptableObject upgrades;
 
@@ -19,11 +21,12 @@ public class MainConstruct : MonoBehaviour
 		gameManager = GameManager.instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+	public void setPart(WorldPart part){
+		partLinked = part;
+	}
+	public WorldPart getPart(){
+		return partLinked;
+	}
 
 	public bool haveEnoughtResources(){
 		gameManager = GameManager.instance;

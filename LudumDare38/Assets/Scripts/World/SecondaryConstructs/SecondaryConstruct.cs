@@ -10,6 +10,10 @@ public class SecondaryConstruct : MonoBehaviour {
 	int durability = 5;
 	int actualDurability = 5;
 
+	GameManager gameManager;
+
+	WorldPart partLinked;
+
 	[SerializeField]
 	public SecondaryConstructScriptableObject upgrades;
 
@@ -22,6 +26,20 @@ public class SecondaryConstruct : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public bool haveEnoughtResources(){
+		gameManager = GameManager.instance;
+		return upgrades.secondaryConstructUpgrades.buildWoodCost <= gameManager.getWood()
+		&& upgrades.secondaryConstructUpgrades.buildMineralCost <= gameManager.getMineral()
+		&& upgrades.secondaryConstructUpgrades.buildGemCost <= gameManager.getGem();
+	}
+	public void setPart(WorldPart part){
+		partLinked = part;
+	}
+	public WorldPart getPart(){
+		return partLinked;
+	}
+
 
 	public bool canBeReapair(){
 		return this.actualDurability != durability;
@@ -42,5 +60,15 @@ public class SecondaryConstruct : MonoBehaviour {
 
 	public int getOxygenCost(){
 		return upgrades.secondaryConstructUpgrades.oxygenCost;
+	}	
+	
+	public int getWoodCost(){
+		return upgrades.secondaryConstructUpgrades.buildWoodCost;
+	}
+	public int getMineralCost(){
+		return upgrades.secondaryConstructUpgrades.buildMineralCost;
+	}
+	public int getGemCost(){
+		return upgrades.secondaryConstructUpgrades.buildGemCost;
 	}
 }

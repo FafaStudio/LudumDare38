@@ -24,31 +24,31 @@ public class RessourcesUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		oxygenDisplay.text = "" + gameManager.getOxygen();
-		setAugment(oxygenAugmentDisplay, gameManager.worldController.getDayOxygenProduct()/gameManager.getDayDuration());
+		oxygenDisplay.text = "" + Mathf.Floor(gameManager.getOxygen());
+		setAugment(oxygenAugmentDisplay, gameManager.worldController.getDayOxygenProduct());
 
-		woodDisplay.text = "" + gameManager.getWood();
-		setAugment(woodAugmentDisplay, gameManager.worldController.getDayWoodProduct()/gameManager.getDayDuration());
+		woodDisplay.text = "" + Mathf.Floor(gameManager.getWood());
+		setAugment(woodAugmentDisplay, gameManager.worldController.getDayWoodProduct());
 
-		mineralDisplay.text = "" + gameManager.getMineral();
-		setAugment(mineralAugmentDisplay, gameManager.worldController.getDayMineralProduct()/gameManager.getDayDuration());
+		mineralDisplay.text = "" + Mathf.Floor(gameManager.getMineral());
+		setAugment(mineralAugmentDisplay, gameManager.worldController.getDayMineralProduct());
 
-		energyDisplay.text = "" + gameManager.getEnergy();
-		setAugment(energyAugmentDisplay, gameManager.worldController.getDayEnergieProduct()/gameManager.getDayDuration());
+		energyDisplay.text = "" + Mathf.Floor(gameManager.getEnergy());
+		setAugment(energyAugmentDisplay, gameManager.worldController.getDayEnergieProduct());
 
-		gemDisplay.text = "" + gameManager.getGem();
-		setAugment(gemAugmentDisplay, gameManager.worldController.getDayGemProduct()/gameManager.getDayDuration());
+		gemDisplay.text = "" + Mathf.Floor(gameManager.getGem());
+		setAugment(gemAugmentDisplay, gameManager.worldController.getDayGemProduct());
 	}
 
 	private void setAugment(Text text, float value){
 		if(value > 0){
-			text.text = "+" + value + "/s";
+			text.text = "+" + value + "/d";
 			text.color = Color.green;
 		}	else	if(value ==0){
 			text.text = "";
 			text.color = Color.green;
 		}	else	{
-			text.text = "" + value + "/s";
+			text.text = "" + value + "/d";
 			text.color = Color.red;
 		}
 	}

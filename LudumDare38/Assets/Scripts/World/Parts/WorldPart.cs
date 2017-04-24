@@ -51,6 +51,7 @@ public class WorldPart : MonoBehaviour {
 
 	public void launchEruption(){
 		eruptionParticleEffect.SetActive (true);
+		SoundManager.instance.launchSound ("Eruption");
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Play();
 	}
 

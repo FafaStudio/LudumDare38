@@ -45,11 +45,14 @@ public class SoundManager : MonoBehaviour {
 				break;
 		case "fallinAsteroid":
 			source.clip = menaceSound [2];
-			source.loop = true;
 			break;
 			case "explosionAsteroid":
 				source.clip = menaceSound [1];
 				break;
+		case "Eruption":
+			source.clip = menaceSound [3];
+			break;
+
 			case "getRessource":
 				source.clip = recuperationRessourceVolante;
 				break;

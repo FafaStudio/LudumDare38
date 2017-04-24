@@ -26,8 +26,7 @@ public class Asteroid : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0, 0, worldPart.transform.rotation.eulerAngles.z-75);
 		objective = worldPart.GetComponent<WorldPart>().anchor.transform.position;
 
-		//SoundManager.instance.launchSound ("fallinAsteroid");
-
+		SoundManager.instance.launchSound ("fallinAsteroid");
 	}
 
 	void Update () {

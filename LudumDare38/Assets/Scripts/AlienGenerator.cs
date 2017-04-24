@@ -16,13 +16,11 @@ public class AlienGenerator : MonoBehaviour {
 	Vector3 getRandomOuterPosition(){
 		int xValue = 0;
 		int yValue = 0;
-		while(xValue < 15 && yValue < 15){
-			xValue = Random.Range(0,30);
-			yValue = Random.Range(0,30);
+		while(xValue < 15 && xValue > -15 && yValue < 15 && yValue > -15){
+			xValue = Random.Range(-30,30);
+			yValue = Random.Range(-30,30);
 		}
-
 		return new Vector3(xValue, yValue);
-		
 	}
 
 	

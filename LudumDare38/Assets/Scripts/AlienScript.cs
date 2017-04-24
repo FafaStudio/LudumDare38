@@ -7,7 +7,7 @@ public class AlienScript : MonoBehaviour {
 
 	Vector3 origin;
 	Vector3 objective;
-	// Use this for initialization
+
 	void Start () {
 		origin = transform.position;
 		findWorldPart();
@@ -15,8 +15,7 @@ public class AlienScript : MonoBehaviour {
 		worldPart.GetComponent<WorldPart>().alienize(gameObject);
 		objective = worldPart.GetComponent<WorldPart>().anchor.transform.position;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if(transform.position != objective){
 			goToWorldPart();

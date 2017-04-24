@@ -73,5 +73,8 @@ public class MovementController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		if(coll.gameObject.tag=="Ground")
 			builder.setActualPart(coll.gameObject);
+		if (coll.gameObject.tag == "Menace") {
+			transform.position = new Vector2 (transform.position.x, transform.position.y);
+		}
 	}
 }

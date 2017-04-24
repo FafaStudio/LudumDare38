@@ -8,8 +8,11 @@ public class Asteroid : MonoBehaviour {
 
 	float speedRotation;
 
+	public Sprite[] asteroidSprite;
+
 
 	void Start () {
+		GetComponent<SpriteRenderer>().sprite = asteroidSprite[(int)Random.Range(0f, asteroidSprite.Length)];
 		direction = new Vector3 (Random.Range (-0.05f, 0.05f), Random.Range (-0.05f, 0.05f), 0f);
 		float scale = Random.Range (0.5f, 2f);
 		speedRotation = (int)Random.Range (10f, 50f);

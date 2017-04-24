@@ -12,16 +12,16 @@ public class RessourceVolante : MonoBehaviour {
 
 	public SpriteRenderer caps;
 
-	public Color oxygenColor;
-	public Color woodColor;
-	public Color mineralColor;
-	public Color energyColor;
-	public Color gemColor;
+	public Sprite oxygenSprite;
+	public Sprite woodSprite;
+	public Sprite mineralSprite;
+	public Sprite energySprite;
+	public Sprite gemSprite;
 
 	void Start () {
 		currentRessource = GetRandomEnum<ressource> ();
 		direction = new Vector3 (Random.Range (-0.05f, 0.05f), Random.Range (-0.05f, 0.05f), 0f);
-		setCapsColor ();
+		setCapsSprite ();
 		Destroy (this.gameObject, 45f);
 	}
 
@@ -36,22 +36,22 @@ public class RessourceVolante : MonoBehaviour {
 			transform.Translate (direction);
 	}
 
-	void setCapsColor(){
+	void setCapsSprite(){
 		switch (currentRessource) {
 		case ressource.energy:
-			caps.color = energyColor;
+			caps.sprite = energySprite;
 			break;
 		case ressource.gem:
-			caps.color = gemColor;
+			caps.sprite = gemSprite;
 			break;
 		case ressource.mineral:
-			caps.color = mineralColor;
+			caps.sprite = mineralSprite;
 			break;
 		case ressource.oxygen:
-			caps.color = oxygenColor;
+			caps.sprite = oxygenSprite;
 			break;
 		case ressource.wood:
-			caps.color = woodColor;
+			caps.sprite = woodSprite;
 			break;
 		}
 	}

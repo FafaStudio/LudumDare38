@@ -15,13 +15,22 @@ public class MusicManager : MonoBehaviour {
 
 	float chronoBattleMusic = 10f;
 
+	public AudioClip[] music1;
+	public AudioClip[] music2;
+
+	int indiceMusic;
+
 	void Start () {
+		indiceMusic = (int)Random.Range(1f,3f);
 		for (int i = 1; i < piste.Length; i++) {
 			piste [i].volume = 0;
 		}
+		launchMusic ();
 	}
 
 	void Update(){
+		if (!battleMusicIsLaunch && piste [5].volume > 0f)
+			piste [5].volume -= Time.deltaTime;
 		if (battleMusicIsLaunch)
 			stopBattlePiste ();
 		detectEndMusic ();
@@ -44,18 +53,29 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	public void launchMusic(){
-		for (int i = 0; i < piste.Length; i++) {
-			piste [i].Stop ();
-			piste [i].Play ();
+		if (indiceMusic == 1) {
+			indiceMusic = 2;
+			for (int i = 0; i < piste.Length; i++) {
+				piste [i].Stop ();
+				piste [i].clip = music2 [i];
+				piste [i].Play ();
+			}
+		} else {
+			indiceMusic = 1;
+			for (int i = 0; i < piste.Length; i++) {
+				piste [i].Stop ();
+				piste [i].clip = music1 [i];
+				piste [i].Play ();
+			}
 		}
 	}
 
 	public void fadeEffect(){
 		for (int i = 0; i < piste.Length; i++) {
-			if ((piste [i].volume > 0f) && (piste [i].volume < 0.8f))
+			if ((piste [i].volume > 0f) && (piste [i].volume < 0.6f))
 				piste [i].volume += Time.deltaTime;
-			else if (piste [i].volume > 0.8f)
-				piste [i].volume = 0.8f;
+			else if (piste [i].volume > 0.6f)
+				piste [i].volume = 0.6f;
 				
 		}
 	}
@@ -68,8 +88,10 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	public void launchBatuluPiste(){
-		if (battleMusicIsLaunch)
+		if (battleMusicIsLaunch) {
+			chronoBattleMusic += 5f;
 			return;
+		}
 		battleMusicIsLaunch = true;
 		piste [5].volume = 0.1f;
 	}
@@ -84,7 +106,6 @@ public class MusicManager : MonoBehaviour {
 
 	public void removeBatuluPiste(){
 		battleMusicIsLaunch = false;
-		piste [5].volume = 0f;
 	}
 
 	public void removePiste(){

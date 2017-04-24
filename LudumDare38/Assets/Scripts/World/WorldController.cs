@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldController : MonoBehaviour {
 
 
-	List<WorldPart> worldParts;
+	public List<WorldPart> worldParts;
 	public GrassPart grassPart;
 	public MineralPart mineralPart;
 	public GemPart gemPart;
@@ -86,6 +86,7 @@ public class WorldController : MonoBehaviour {
 	private WorldPart instantiateWorldPart(int index, WorldPart worldPart){
 		WorldPart instance = Instantiate(worldPart, transform.position, Quaternion.Euler(0, 0, (float)-15*index), transform);
 		instance.name = "Part " + index + " (" + instance.GetType() + ")"; 
+		instance.GetComponent<WorldPart>().setIndex(index);
 		return instance;
 	}
 

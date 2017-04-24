@@ -18,6 +18,9 @@ public class WorldPart : MonoBehaviour {
 
 	private WorldController worldController;
 
+	int alienCounters = 0;
+	int asteroideCounters = 0;
+
 	bool isSterile;
 	bool isOccuped;
 
@@ -209,4 +212,31 @@ public class WorldPart : MonoBehaviour {
 
 	public virtual void dismissSterile(){}
 	public virtual void setMultiplicator(){}
+
+	public bool isAlienProtected(){
+		return alienCounters!=0;
+	}
+	public void addAlienCounter(){
+		alienCounters++;
+	}
+	public void removeAlienCounter(){
+		alienCounters--;
+	}
+	public bool isAsteroideProtected(){
+		return asteroideCounters!=0;
+	}
+	public void addAsteroideCounter(){
+		asteroideCounters++;
+	}
+	public void removeAsteroideCounter(){
+		asteroideCounters--;
+	}
+
+	public void setIndex(int index){
+		this.index = index;
+	}
+
+	public int getIndex(){
+		return index;
+	}
 }

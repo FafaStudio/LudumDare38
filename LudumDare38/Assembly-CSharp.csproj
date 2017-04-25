@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\UI\WorldPartUI.cs" />
      <Compile Include="Assets\Scripts\World\Builder.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\AsteroideCounter.cs" />
+     <Compile Include="Assets\Scripts\World\MainContructs\EruptCounter.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\MainConstruct.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\MainConstructScriptableObject.cs" />
      <Compile Include="Assets\Scripts\World\MainContructs\SpaceRocket.cs" />
@@ -94,6 +95,7 @@
      <Compile Include="Assets\Scripts\World\Parts\MineralPart.cs" />
      <Compile Include="Assets\Scripts\World\Parts\WorldPart.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\AsteroideCounterSecondary.cs" />
+     <Compile Include="Assets\Scripts\World\SecondaryConstructs\EruptCounterSecondary.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\Magnet.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\SecondaryConstruct.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\SecondaryConstructScriptableObject.cs" />

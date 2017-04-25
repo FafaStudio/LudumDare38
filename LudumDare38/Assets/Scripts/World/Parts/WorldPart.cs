@@ -20,8 +20,11 @@ public class WorldPart : MonoBehaviour {
 
 	public GameObject eruptionParticleEffect;
 
+	private AreaDetector areaDetector;
+
 	int alienCounters = 0;
 	int asteroideCounters = 0;
+	int eruptionCounters = 0;
 
 	bool isSterile;
 	bool isOccuped;
@@ -48,10 +51,14 @@ public class WorldPart : MonoBehaviour {
 		secondaryConstruct = secondaryEmptyConstruct;
 		anim = GetComponent<Animator> ();
 		eruptionParticleEffect.SetActive (false);
+		areaDetector = GetComponentInChildren<AreaDetector>();
 		//eruptionParticleEffect.GetComponent<ParticleSystem>().startLifetime += 
 	}
 
 	public void launchEruption(){
+		if(eruptionCounters!=0){
+			return;
+		}
 		MusicManager.instance.launchBatuluPiste ();
 		isErupting = true;
 		eruptionParticleEffect.SetActive (true);
@@ -287,6 +294,9 @@ public class WorldPart : MonoBehaviour {
 		return alienCounters!=0;
 	}
 	public void addAlienCounter(){
+		if(areaDetector.actualAlien != null){
+			areaDetector.actualAlien.GetComponent<AlienScript>().runAway();
+		}
 		if(isAliened){
 			unalienize();
 		}
@@ -299,10 +309,23 @@ public class WorldPart : MonoBehaviour {
 		return asteroideCounters!=0;
 	}
 	public void addAsteroideCounter(){
+		if(areaDetector.actualAsteroid != null){
+			areaDetector.actualAsteroid.GetComponent<Asteroid>().runAway();
+		}
 		asteroideCounters++;
 	}
 	public void removeAsteroideCounter(){
 		asteroideCounters--;
+	}
+
+	public void addEruptionCounter(){
+		if(isErupting){
+			interuptEruption();
+		}
+		eruptionCounters++;
+	}
+	public void removeEruptionCounter(){
+		eruptionCounters--;
 	}
 
 	public void setIndex(int index){

@@ -111,7 +111,6 @@ public class WorldPart : MonoBehaviour {
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
 		builder.displayBuilderMenu();
 		worldController.worldConstructs++;
-		print(this.mainConstruct.constructName);
 		if(this.mainConstruct.constructName == "House"){
 			worldController.setIsHomeBuild(true);
 		}

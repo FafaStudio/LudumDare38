@@ -31,6 +31,7 @@ public class Builder : MonoBehaviour {
 	private void undisplayPartMenu(){
 		actualPart.stopSelectedAnimation ();
 		worldPartUI.undisplayInterface();
+		worldPartUI.undisplayLogoDefense();
 	}
 
 	public void displayBuilderMenu(){
@@ -42,6 +43,7 @@ public class Builder : MonoBehaviour {
 		if(actualPart.secondaryConstruct.name != "Empty"){
 			worldPartUI.displayInterfaceSecondary(actualPart.secondaryConstruct.canBeReapair());
 		}
+		worldPartUI.displayLogoDefense(actualPart);
 	}
 
 	public void upgrade(){

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class VolcanoPlug : Consumable {
 	public override void useItem(WorldPart partLinked){
+		partLinked.interuptEruption();
 	}
 
 	public override bool canBeUse(WorldPart partLinked){
-		return true;
+		return partLinked.getIsErupting();
 	}
 }

@@ -72,6 +72,10 @@ public class RessourceVolante : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			gainRessource ();
 		}
+
+		if(other.gameObject.tag == "Magnet"){
+			direction = (this.transform.position - other.transform.position).normalized;
+		}
 	}
 
 	public void gainRessource(){

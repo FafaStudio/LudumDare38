@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/MainMenu.unity
-=======
 - path: Assets/Scenes/mainSulexa.unity
->>>>>>> 00219534201870071a8af702c5e9605a8c0dc8ff
   isLoaded: 1
   isActive: 1

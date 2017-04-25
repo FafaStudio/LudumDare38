@@ -16,7 +16,8 @@ public class Consumable : MonoBehaviour {
 		return upgrades.mainConstructUpgrades[0].upgradeWoodCost <= gameManager.getWood()
 		&& upgrades.mainConstructUpgrades[0].upgradeMineralCost <= gameManager.getMineral()
 		&& upgrades.mainConstructUpgrades[0].upgradeGemCost <= gameManager.getGem()
-		&& upgrades.mainConstructUpgrades[0].upgradeOxygenCost <= gameManager.getOxygen();
+		&& upgrades.mainConstructUpgrades[0].upgradeOxygenCost <= gameManager.getOxygen()
+		&& upgrades.mainConstructUpgrades[0].energyCost <= gameManager.getEnergy();
 	}
 
 	public void payItem(){
@@ -24,6 +25,7 @@ public class Consumable : MonoBehaviour {
 		gameManager.consumneMineral(upgrades.mainConstructUpgrades[0].upgradeMineralCost);
 		gameManager.consumneGem(upgrades.mainConstructUpgrades[0].upgradeGemCost);
 		gameManager.consumneOxygen(upgrades.mainConstructUpgrades[0].upgradeOxygenCost);
+		gameManager.consumneEnergy(upgrades.mainConstructUpgrades[0].energyCost);
 	}
 	public int getWoodCost(){
 		return upgrades.mainConstructUpgrades[0].upgradeWoodCost;

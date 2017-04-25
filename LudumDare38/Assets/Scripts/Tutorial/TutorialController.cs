@@ -25,7 +25,7 @@ public class TutorialController : MonoBehaviour {
 		if(tutorialPosition == 6){
 			menu.SetActive(true);
 		}
-		if(tutorialPosition == 13){
+		if(tutorialPosition == 15){
 			SpaceSpawner.instance.spawnMenace ("Alien");
 		}
 	}
@@ -55,6 +55,13 @@ public class TutorialController : MonoBehaviour {
 
 	public bool isPosition(int pos){
 		return tutorialPosition == pos;
+	}
+
+	public void endTutorial(){
+		s_Instance = instance;
+		menu.SetActive(true);
+		tutorialPosition = tutorialTexts.listText.Count;
+		hideTutorial();
 	}
 
 	private static TutorialController s_Instance = null;

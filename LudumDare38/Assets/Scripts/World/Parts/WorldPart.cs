@@ -115,6 +115,17 @@ public class WorldPart : MonoBehaviour {
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
+	public void upgradeMainConstruct(){
+		if(!mainConstruct.canBeUpgraded()){
+			return;
+		}
+		mainConstruct.upgrade();
+		gameManager.consumneWood(this.mainConstruct.getWoodCost());
+		gameManager.consumneMineral(this.mainConstruct.getMineralCost());
+		gameManager.consumneGem(this.mainConstruct.getGemCost());
+		builder.displayBuilderMenu();
+	}
+
 	public void launchConstructionSound(MainConstruct batiment){
 		switch (batiment.categorie) {
 		case MainConstruct.categorieBuilding.usine:
@@ -155,6 +166,18 @@ public class WorldPart : MonoBehaviour {
 		builder.displayBuilderMenu();
 		worldController.worldConstructs--;
 		MusicManager.instance.GetComponent<MusicManager> ().verifyPiste (worldController.worldConstructs);
+	}
+
+	public void repairSecondaryConstruct(){
+		if(!secondaryConstruct.canBeReapair()){
+			return;
+		}
+		secondaryConstruct.repair();
+
+		gameManager.consumneWood(this.secondaryConstruct.getWoodCost()/5);
+		gameManager.consumneMineral(this.secondaryConstruct.getMineralCost()/5);
+		gameManager.consumneGem(this.secondaryConstruct.getGemCost()/5);
+		builder.displayBuilderMenu();
 	}
 
 	public void destroyConstruction(){

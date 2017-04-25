@@ -8,7 +8,7 @@ public class SecondaryConstruct : MonoBehaviour {
 	int constructLevel = 0;
 
 	int durability = 5;
-	int actualDurability = 5;
+	public int actualDurability = 5;
 
 	GameManager gameManager;
 
@@ -35,11 +35,14 @@ public class SecondaryConstruct : MonoBehaviour {
 	}
 
 	public void repair(){
-		durability++;
+		actualDurability++;
 	}
 
 	public void useDurability(){
-		durability--;
+		actualDurability--;
+		if(actualDurability == 0){
+			partLinked.destroySecondaryConstruct();
+		}
 	}
 
 	public int getEnergyCost(){

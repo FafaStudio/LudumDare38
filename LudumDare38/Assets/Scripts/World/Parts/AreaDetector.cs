@@ -15,11 +15,17 @@ public class AreaDetector : MonoBehaviour {
 			actualAlien = coll.gameObject;
 			if(worldPart.isAlienProtected()){
 				coll.gameObject.GetComponent<AlienScript>().runAway();
+				if(worldPart.secondaryConstruct.GetComponent<alienCounterSecondary>() != null){
+					worldPart.secondaryConstruct.useDurability();
+				}
 			}
 		}	else	if(coll.gameObject.GetComponent<Asteroid>() != null){
 			actualAsteroid = coll.gameObject;
 			if(worldPart.isAsteroideProtected()){
 				coll.gameObject.GetComponent<Asteroid>().runAway();
+				if(worldPart.secondaryConstruct.GetComponent<AsteroideCounterSecondary>() != null){
+					worldPart.secondaryConstruct.useDurability();
+				}
 			}
 		}	
 	}

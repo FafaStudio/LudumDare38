@@ -9,7 +9,6 @@ public class MenuUI : MonoBehaviour {
 	public List<Button> buttonToDeactiveWithoutHome;
 	// Use this for initialization
 	public void setActive(bool boolean){
-
 		buttonToDeactiveWithoutHome[0].interactable = !boolean;
 		buttonToDeactiveWithoutHome[0].transform.FindChild("descriptionContainer").gameObject.SetActive(false);
 		buttonToDeactiveWithoutHome[0].gameObject.GetComponent<EventTrigger>().enabled = !boolean;

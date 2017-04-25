@@ -111,7 +111,8 @@ public class WorldPart : MonoBehaviour {
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
 		builder.displayBuilderMenu();
 		worldController.worldConstructs++;
-		if(this.mainConstruct.constructName == "Home"){
+		print(this.mainConstruct.constructName);
+		if(this.mainConstruct.constructName == "House"){
 			worldController.setIsHomeBuild(true);
 		}
 		if(this.mainConstruct.constructName == "Power plant"){
@@ -151,7 +152,7 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void removeMainConstruct(){
-		if(mainConstruct.constructName == "Home"){
+		if(mainConstruct.constructName == "House"){
 			worldController.setIsHomeBuild(false);
 		}
 		Destroy(mainConstruct.gameObject);
@@ -163,7 +164,7 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void DestroyMainConstruct(){
-		if(mainConstruct.constructName == "Home"){
+		if(mainConstruct.constructName == "House"){
 			worldController.setIsHomeBuild(false);
 		}
 		GameManager.instance.launchExplosion (mainConstruct.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position);

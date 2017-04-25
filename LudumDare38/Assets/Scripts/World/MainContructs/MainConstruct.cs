@@ -39,7 +39,7 @@ public class MainConstruct : MonoBehaviour
 	}
 
 	public bool canBeUpgraded(){
-		return upgrades.mainConstructUpgrades.Count > constructLevel+1;
+		return upgrades.mainConstructUpgrades.Count > constructLevel+1 && haveEnoughtResources();
 	}
 
 	public void upgrade(){

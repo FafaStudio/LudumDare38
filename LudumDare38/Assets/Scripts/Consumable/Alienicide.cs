@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Alienicide : Consumable {
 	public override void useItem(WorldPart partLinked){
-		partLinked.unalienize();
+		SpaceSpawner.instance.actualAlien.GetComponent<AlienScript>().worldPart.GetComponent<WorldPart>().unalienize();
 	}
 
 	public override bool canBeUse(WorldPart partLinked){
-		return partLinked.getIsAliened();
+		if(SpaceSpawner.instance.actualAlien != null){
+			return SpaceSpawner.instance.actualAlien.GetComponent<AlienScript>().worldPart.GetComponent<WorldPart>().getIsAliened();
+		}	else	{
+			return false;
+		}
 	}
 
 	

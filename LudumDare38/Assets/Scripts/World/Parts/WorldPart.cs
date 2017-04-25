@@ -26,6 +26,8 @@ public class WorldPart : MonoBehaviour {
 	bool isSterile;
 	bool isOccuped;
 
+	bool isErupting;
+
 	bool isAliened = false;
 
 	GameObject alien;
@@ -50,7 +52,11 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void launchEruption(){
+<<<<<<< HEAD
 		MusicManager.instance.launchBatuluPiste ();
+=======
+		isErupting = true;
+>>>>>>> d2e0699a71929f8614f0149d30022d3fd0c2197c
 		eruptionParticleEffect.SetActive (true);
 		SoundManager.instance.launchSound ("Eruption");
 		GameManager.instance.addMenace (this.gameObject);
@@ -58,9 +64,20 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void stopEruption(){
+		isErupting = false;
 		destroyConstruction ();
+<<<<<<< HEAD
 		sterilize ();
 		GameManager.instance.removeMenace (this.gameObject);
+=======
+		setIsSterile(true);
+		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
+		eruptionParticleEffect.SetActive (false);
+	}
+
+	public void interuptEruption(){
+		isErupting = false;
+>>>>>>> d2e0699a71929f8614f0149d30022d3fd0c2197c
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
 		eruptionParticleEffect.SetActive (false);
 	}
@@ -204,7 +221,9 @@ public class WorldPart : MonoBehaviour {
 		isSterile = boolean;
 		if (isSterile) {
 			sterilize ();
-		} 
+		} 	else	{
+			dismissSterile();
+		}
 	}
 
 	public bool getIsSterile(){
@@ -243,6 +262,9 @@ public class WorldPart : MonoBehaviour {
 		this.alien = null;
 	}
 
+	public bool getIsErupting(){
+		return isErupting;
+	}
 	private void setSterileMultiplicator(){
 		setOxygenMultiplicator(0.5f);
 		setWoodMultiplicator(0.5f);

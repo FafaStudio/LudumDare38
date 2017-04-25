@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AlienScript : MonoBehaviour {
-	GameObject worldPart;
+	public GameObject worldPart;
 
 	Vector3 origin;
 	Vector3 objective;
@@ -49,7 +49,11 @@ public class AlienScript : MonoBehaviour {
 	public void runAway(){
 		objective = origin;
 		SpaceSpawner.instance.setHasSpawnedalien (false);
+<<<<<<< HEAD
 		GameManager.instance.removeMenace (this.gameObject);
+=======
+		SpaceSpawner.instance.actualAlien = null;
+>>>>>>> d2e0699a71929f8614f0149d30022d3fd0c2197c
 		Destroy(gameObject, 5);
 	}
 

@@ -13,6 +13,8 @@ public class SpaceSpawner : MonoBehaviour {
 	public GameObject asteroid;
 	public GameObject alien;
 
+	public GameObject actualAlien;
+
 	bool spawnedAlien = false;
 
 	float maxTimeBetweenRessource;
@@ -61,7 +63,7 @@ public class SpaceSpawner : MonoBehaviour {
 			if (spawnedAlien)
 				return;
 			spawnedAlien = true;
-			InstantiateObject (alien);
+			actualAlien = InstantiateObject (alien);
 		} else if (menace == "Asteroid") {
 			InstantiateObject (asteroid);
 		} else if (menace == "Eruption") {
@@ -79,10 +81,11 @@ public class SpaceSpawner : MonoBehaviour {
 		}
 	}
 
-	public void InstantiateObject(GameObject objectToInstantiate ){
+	public GameObject InstantiateObject(GameObject objectToInstantiate ){
 		GameObject toInstantiate;
 		toInstantiate = Instantiate (objectToInstantiate, getRandomOuterPosition(), Quaternion.identity) as GameObject;
 		toInstantiate.transform.parent = this.transform;
+		return toInstantiate;
 	}
 
 	public void setHasSpawnedalien(bool val){

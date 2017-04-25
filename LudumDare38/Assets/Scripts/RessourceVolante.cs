@@ -74,7 +74,8 @@ public class RessourceVolante : MonoBehaviour {
 		}
 
 		if(other.gameObject.tag == "Magnet"){
-			direction = (this.transform.position - other.transform.position).normalized;
+			canMove = false;
+			//direction = (other.transform.position - this.transform.position).normalized;
 		}
 	}
 

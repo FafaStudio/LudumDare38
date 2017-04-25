@@ -22,7 +22,7 @@ public class TutorialController : MonoBehaviour {
 		}	else	{
 			changeText(tutorialTexts.listText[tutorialPosition].text);
 		}
-		if(tutorialPosition == 5){
+		if(tutorialPosition == 6){
 			menu.SetActive(true);
 		}
 		if(tutorialPosition == 13){

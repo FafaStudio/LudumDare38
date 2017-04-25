@@ -118,6 +118,10 @@ public class WorldPart : MonoBehaviour {
 		if(this.mainConstruct.constructName == "Power plant"){
 			TutorialController.instance.nextIfPosition(12);
 		}
+		
+		if(this.mainConstruct.constructName == "Aliencide diffuser"){
+			TutorialController.instance.nextIfPosition(16);
+		}
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
@@ -197,9 +201,6 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void addSecondaryConstruct(GameObject secondaryConstruct){
-		if(this.secondaryConstruct.constructName == "Alienicide module"){
-			TutorialController.instance.nextIfPosition(16);
-		}
 		GameObject instance = Instantiate(secondaryConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
 		this.secondaryConstruct = instance.GetComponent<SecondaryConstruct>();
 		instance.GetComponent<SecondaryConstruct>().setPart (this);

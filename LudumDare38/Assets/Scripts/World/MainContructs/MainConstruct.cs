@@ -39,11 +39,11 @@ public class MainConstruct : MonoBehaviour
 	}
 
 	public bool canBeUpgraded(){
-		return upgrades.mainConstructUpgrades.Count > constructLevel;
+		return upgrades.mainConstructUpgrades.Count > constructLevel+1;
 	}
 
 	public void upgrade(){
-
+		constructLevel++;
 	}
 
 	public int getOxygenProduction(){

@@ -20,10 +20,13 @@ public class SpaceSpawner : MonoBehaviour {
 	float maxTimeBetweenRessource;
 	float timePassed;
 
+	float timerMenace;
+
 
 	void Start () {
 		maxTimeBetweenRessource = Random.Range (1f, 5f);
 		timePassed = maxTimeBetweenRessource;
+		timerMenace = Random.Range (125f, 240f);
 	}
 
 	Vector3 getRandomOuterPosition(){
@@ -38,11 +41,13 @@ public class SpaceSpawner : MonoBehaviour {
 
 	void Update () {
 		timePassed -= Time.deltaTime;
+		timerMenace -= Time.deltaTime;
 
 		if (spawnAlien) {
 			spawnAlien = false;
 			spawnMenace ("Alien");
 		}
+
 		if (spawnAsteroid) {
 			spawnAsteroid = false;
 			spawnMenace ("Asteroid");
@@ -50,6 +55,23 @@ public class SpaceSpawner : MonoBehaviour {
 		if (spawnEruption) {
 			spawnEruption = false;
 			spawnMenace ("Eruption");
+		}
+
+		if (timerMenace <= 0) {
+			int rand = (int)Random.Range (0f, 2f);
+			if (rand == 0) {
+				spawnMenace ("Alien");
+				if(GameManager.instance.getDay()>3)
+					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()-3));
+				else
+					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
+			} else {
+				spawnMenace ("Asteroid");
+				if(GameManager.instance.getDay()>3)
+					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()-3));
+				else
+					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
+			}
 		}
 		if (timePassed <= 0) {
 			InstantiateObject (ressourceVolante);

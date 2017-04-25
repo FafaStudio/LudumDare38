@@ -13,6 +13,8 @@ public class SoundManager : MonoBehaviour {
 
 	public AudioClip[] soundPartUI;
 
+	public AudioClip switchDay;
+
 	public void launchSound(string sound){
 		for (int i = 0; i < piste.Length; i++) {
 			if ((!piste [i].isPlaying)||(piste[i].clip==null)) {
@@ -51,6 +53,9 @@ public class SoundManager : MonoBehaviour {
 				break;
 		case "Eruption":
 			source.clip = menaceSound [3];
+			break;
+		case "switchDay":
+			source.clip = switchDay;
 			break;
 
 			case "getRessource":

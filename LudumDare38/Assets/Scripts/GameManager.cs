@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour {
 			if (worldController.getEruptionNumber ()!=0) {
 				worldController.endEruption ();
 			}
+			SoundManager.instance.launchSound ("switchDay");
 			SpaceSpawner.instance.trySpawnEruption ();
 			gameDay++;
 		}

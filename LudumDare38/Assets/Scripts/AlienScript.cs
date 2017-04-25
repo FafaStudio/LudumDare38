@@ -56,6 +56,7 @@ public class AlienScript : MonoBehaviour {
 
 	public void runAway(){
 		isRunningAway = true;
+		SoundManager.instance.launchSound ("guepeRepulsed");
 		objective = origin;
 		SpaceSpawner.instance.setHasSpawnedalien (false);
 		GameManager.instance.removeMenace (this.gameObject);

@@ -59,6 +59,7 @@ public class WorldPart : MonoBehaviour {
 
 	public void launchEruption(){
 		if(eruptionCounters!=0){
+			SoundManager.instance.launchSound ("eruptionRepulsed");
 			return;
 		}
 		MusicManager.instance.launchBatuluPiste ();
@@ -70,6 +71,8 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void stopEruption(){
+		if (!isErupting)
+			return;
 		isErupting = false;
 		destroyConstruction ();
 		GameManager.instance.removeMenace (this.gameObject);
@@ -81,6 +84,7 @@ public class WorldPart : MonoBehaviour {
 	public void interuptEruption(){
 		isErupting = false;
 		GameManager.instance.removeMenace (this.gameObject);
+		SoundManager.instance.launchSound ("eruptionRepulsed");
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
 		eruptionParticleEffect.SetActive (false);
 	}
@@ -215,8 +219,6 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void destroySecondaryConstruct(){
-		if (secondaryConstruct.constructName !="Empty") 
-			GameManager.instance.launchExplosion (secondaryConstruct.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position);
 		Destroy(secondaryConstruct.gameObject);
 		secondaryConstruct = secondaryEmptyConstruct;
 		builder.displayBuilderMenu();
@@ -309,21 +311,21 @@ public class WorldPart : MonoBehaviour {
 	public void alienize(GameObject alien){
 		this.isAliened = true;
 		this.alien = alien;
-		if (mainConstruct.name != "Empty") {
+		/*if (mainConstruct.name != "Empty") {
 			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = new Color(0, 199, 241);
 		}
 		if (secondaryConstruct.name != "Empty") {
 			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = new Color(0, 199, 241);
-		}
+		}*/
 	}
 
 	public void unalienize(){
-		if (mainConstruct.name != "Empty") {
+		/*if (mainConstruct.name != "Empty") {
 			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
 		}
 		if (secondaryConstruct.name != "Empty") {
 			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
-		}
+		}*/
 		this.isAliened = false;
 		this.alien.GetComponent<AlienScript>().runAway();
 		this.alien = null;

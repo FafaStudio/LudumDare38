@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour {
 
 	public AudioClip[] constructionSound;
 	public AudioClip[] menaceSound;
+	public AudioClip[] menaceSoudRepulsed;
 
 	public AudioClip recuperationRessourceVolante;
 
@@ -91,6 +92,15 @@ public class SoundManager : MonoBehaviour {
 				break;
 			case "clickUI":
 				source.clip = soundPartUI [3];
+				break;
+			case "guepeRepulsed":
+				source.clip = menaceSoudRepulsed [0];
+				break;
+			case "asteroidRepulsed":
+				source.clip = menaceSoudRepulsed [1];
+				break;
+			case "eruptionRepulsed":
+				source.clip = menaceSoudRepulsed [2];
 				break;
 		}
 		source.Play ();

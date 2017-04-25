@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VolcanoPlug : Consumable {
+	
 	public override void useItem(WorldPart partLinked){
 		partLinked.interuptEruption();
 	}

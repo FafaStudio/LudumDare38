@@ -56,6 +56,7 @@ public class Asteroid : MonoBehaviour {
 
 	public void runAway(){
 		objective = origin;
+		SoundManager.instance.launchSound ("asteroidRepulsed");
 		GameManager.instance.removeMenace (this.gameObject);
 		Destroy(gameObject, 20);
 	}

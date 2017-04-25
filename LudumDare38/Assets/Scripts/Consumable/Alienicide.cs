@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Alienicide : Consumable {
 	public override void useItem(WorldPart partLinked){
+		TutorialController.instance.nextIfPosition(15);
 		SpaceSpawner.instance.actualAlien.GetComponent<AlienScript>().worldPart.GetComponent<WorldPart>().unalienize();
 	}
 

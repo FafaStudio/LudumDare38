@@ -25,8 +25,10 @@ public class WorldPart : MonoBehaviour {
 	int alienCounters = 0;
 	int asteroideCounters = 0;
 	int eruptionCounters = 0;
+	int oxygenEmetors = 0;
 
 	bool isSterile;
+	bool isNormalySterile;
 	bool isOccuped;
 
 	bool isErupting;
@@ -112,6 +114,9 @@ public class WorldPart : MonoBehaviour {
 		if(this.mainConstruct.constructName == "Home"){
 			worldController.setIsHomeBuild(true);
 		}
+		if(this.mainConstruct.constructName == "Power plant"){
+			TutorialController.instance.nextIfPosition(12);
+		}
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
@@ -191,6 +196,9 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void addSecondaryConstruct(GameObject secondaryConstruct){
+		if(this.secondaryConstruct.constructName == "Alienicide module"){
+			TutorialController.instance.nextIfPosition(16);
+		}
 		GameObject instance = Instantiate(secondaryConstruct, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 15), transform);
 		this.secondaryConstruct = instance.GetComponent<SecondaryConstruct>();
 		instance.GetComponent<SecondaryConstruct>().setPart (this);
@@ -259,6 +267,18 @@ public class WorldPart : MonoBehaviour {
 
 	public void setIsSterile(bool boolean){
 		isSterile = boolean;
+
+		if (isSterile) {
+			sterilize ();
+		} 	else	{
+			dismissSterile();
+		}
+		isNormalySterile = isSterile;
+	}
+
+	public void tempIsSterile(bool boolean){
+		isSterile = boolean;
+
 		if (isSterile) {
 			sterilize ();
 		} 	else	{
@@ -358,6 +378,22 @@ public class WorldPart : MonoBehaviour {
 	}
 	public void removeEruptionCounter(){
 		eruptionCounters--;
+	}
+
+	public void addOxygenEmetors(){
+		if(isSterile){
+			tempIsSterile(false);
+		}
+		oxygenEmetors++;
+	}
+
+	public void removeOxygenEmetors(){
+		oxygenEmetors--;
+		if(oxygenEmetors == 0){
+			if(isNormalySterile){
+				tempIsSterile(true);
+			}
+		}
 	}
 
 	public void setIndex(int index){

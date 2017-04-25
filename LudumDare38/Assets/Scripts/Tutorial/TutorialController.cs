@@ -7,6 +7,8 @@ public class TutorialController : MonoBehaviour {
 	public Text tutoText;
 	int tutorialPosition = 0;
 
+	public GameObject menu;
+
 	public TutorialScriptableObject tutorialTexts;
 
 	void Awake(){
@@ -19,6 +21,12 @@ public class TutorialController : MonoBehaviour {
 			hideTutorial();
 		}	else	{
 			changeText(tutorialTexts.listText[tutorialPosition].text);
+		}
+		if(tutorialPosition == 5){
+			menu.SetActive(true);
+		}
+		if(tutorialPosition == 13){
+			SpaceSpawner.instance.spawnMenace ("Alien");
 		}
 	}
 

@@ -98,6 +98,7 @@
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\AsteroideCounterSecondary.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\EruptCounterSecondary.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\Magnet.cs" />
+     <Compile Include="Assets\Scripts\World\SecondaryConstructs\OxygenEmetor.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\SecondaryConstruct.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\SecondaryConstructScriptableObject.cs" />
      <Compile Include="Assets\Scripts\World\SecondaryConstructs\alienCounterSecondary.cs" />

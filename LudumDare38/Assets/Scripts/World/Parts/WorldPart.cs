@@ -70,7 +70,6 @@ public class WorldPart : MonoBehaviour {
 	public void stopEruption(){
 		isErupting = false;
 		destroyConstruction ();
-		sterilize ();
 		GameManager.instance.removeMenace (this.gameObject);
 		setIsSterile(true);
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
@@ -79,6 +78,7 @@ public class WorldPart : MonoBehaviour {
 
 	public void interuptEruption(){
 		isErupting = false;
+		GameManager.instance.removeMenace (this.gameObject);
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
 		eruptionParticleEffect.SetActive (false);
 	}
@@ -120,6 +120,7 @@ public class WorldPart : MonoBehaviour {
 			return;
 		}
 		mainConstruct.upgrade();
+		SoundManager.instance.launchSound ("upgradeMainUI");
 		gameManager.consumneWood(this.mainConstruct.getWoodCost());
 		gameManager.consumneMineral(this.mainConstruct.getMineralCost());
 		gameManager.consumneGem(this.mainConstruct.getGemCost());
@@ -204,7 +205,8 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void destroySecondaryConstruct(){
-		GameManager.instance.launchExplosion (secondaryConstruct.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position);
+		if (secondaryConstruct.constructName !="Empty") 
+			GameManager.instance.launchExplosion (secondaryConstruct.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position);
 		Destroy(secondaryConstruct.gameObject);
 		secondaryConstruct = secondaryEmptyConstruct;
 		builder.displayBuilderMenu();
@@ -241,6 +243,7 @@ public class WorldPart : MonoBehaviour {
 		}
 		return mineralMultiplicator * mainConstruct.getMineralProduction();
 	}
+
 	public float getEnergieProduct(){
 		if(isAliened){
 			return -mainConstruct.getEnergyCost() -secondaryConstruct.getEnergyCost();
@@ -269,13 +272,18 @@ public class WorldPart : MonoBehaviour {
 
 	public void sterilize(){
 		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("MORTADELLE");
-		setSterileMultiplicator();
+		StartCoroutine (startSterileMultiplicator ());
 	}
 
+	IEnumerator startSterileMultiplicator(){
+		yield return new WaitForSeconds (0.5f);
+		setSterileMultiplicator();
+	}
 
 	public bool getIsAliened(){
 		return isAliened;
 	}
+
 	public void alienize(GameObject alien){
 		this.isAliened = true;
 		this.alien = alien;
@@ -316,6 +324,7 @@ public class WorldPart : MonoBehaviour {
 	public bool isAlienProtected(){
 		return alienCounters!=0;
 	}
+
 	public void addAlienCounter(){
 		if(areaDetector.actualAlien != null){
 			areaDetector.actualAlien.GetComponent<AlienScript>().runAway();

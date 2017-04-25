@@ -19,6 +19,11 @@ public class MusicManager : MonoBehaviour {
 	public AudioClip[] music2;
 	public AudioClip[] music3;
 
+	public AudioClip gameOverMusic;
+	public AudioClip winMusic;
+
+	GameManager manager;
+
 	int indiceMusic;
 
 	void Start () {
@@ -26,10 +31,13 @@ public class MusicManager : MonoBehaviour {
 		for (int i = 1; i < piste.Length; i++) {
 			piste [i].volume = 0;
 		}
+		manager = GameManager.instance;
 		launchMusic ();
 	}
 
 	void Update(){
+		if (manager.getEndGame ())
+			return;
 		musicMuted ();
 		if (!battleMusicIsLaunch && piste [5].volume > 0f)
 			piste [5].volume -= Time.deltaTime;
@@ -51,6 +59,28 @@ public class MusicManager : MonoBehaviour {
 			piste [i].volume = 1f;
 		}
 	}
+
+	public void clearPistes(){
+		for (int i = 0; i < piste.Length; i++) {
+			piste [i].Stop ();
+			piste [i].clip = null;
+		}
+	}
+
+	public void launchGameOver(){
+		clearPistes ();
+		piste [0].clip = gameOverMusic;
+		piste [0].volume = 0.6f;
+		piste [0].Play ();
+	}
+
+	public void launchWin(){
+		clearPistes ();
+		piste [0].clip = winMusic;
+		piste [0].volume = 0.6f;
+		piste [0].Play ();
+	}
+
 	public void setMusicIsMuted(bool val){
 		muteMusic = val;
 	}

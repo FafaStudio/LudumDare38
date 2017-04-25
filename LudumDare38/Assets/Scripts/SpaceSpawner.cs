@@ -22,7 +22,7 @@ public class SpaceSpawner : MonoBehaviour {
 
 	float timerMenace;
 
-	bool start = false;
+	bool start=false;
 
 	void Start () {
 		maxTimeBetweenRessource = Random.Range (1f, 5f);
@@ -116,6 +116,14 @@ public class SpaceSpawner : MonoBehaviour {
 			spawnMenace ("Eruption");
 		}else
 			spawnMenace ("Eruption");
+	}
+
+	public void startMenace(){
+		start = true;
+	}
+
+	public void stopMenace(){
+		start = false;
 	}
 
 	public GameObject InstantiateObject(GameObject objectToInstantiate ){

@@ -65,28 +65,33 @@ public class SoundManager : MonoBehaviour {
 			case "menaceGuepe":
 				source.clip = menaceSound [0];
 				break;
-		case "fallinAsteroid":
-			source.clip = menaceSound [2];
-			break;
+			case "fallinAsteroid":
+				source.clip = menaceSound [2];
+				break;
 			case "explosionAsteroid":
 				source.clip = menaceSound [1];
 				break;
-		case "Eruption":
-			source.clip = menaceSound [3];
-			break;
-		case "switchDay":
-			source.clip = switchDay;
-			break;
-
+			case "Eruption":
+				source.clip = menaceSound [3];
+				break;
+			case "switchDay":
+				source.clip = switchDay;
+				break;
 			case "getRessource":
 				source.clip = recuperationRessourceVolante;
 				break;
-		case "upgradeMainUI":
-			source.clip = soundPartUI[0];
-			break;
-		case "removeMainUI":
-			source.clip = soundPartUI[1];
-			break;
+			case "upgradeMainUI":
+				source.clip = soundPartUI [0];
+				break;
+			case "removeMainUI":
+				source.clip = soundPartUI [1];
+				break;
+			case "overUI":
+				source.clip = soundPartUI [2];
+				break;
+			case "clickUI":
+				source.clip = soundPartUI [3];
+				break;
 		}
 		source.Play ();
 	}

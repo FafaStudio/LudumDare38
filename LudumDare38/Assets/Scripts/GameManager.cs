@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject explosion;
 
+	bool endGame=false;
+
 	public GameObject gameOverPanel;
 	public GameObject youWinPanel;
 
@@ -58,12 +60,15 @@ public class GameManager : MonoBehaviour {
 		if(Time.time - startLastDay >= dayDuration){
 			//newDay();
 			startLastDay = Time.time;
-			if (worldController.getEruptionNumber ()!=0) {
+			if (worldController.getEruptionNumber ()!= 0 ) {
 				worldController.endEruption ();
 			}
 			SoundManager.instance.launchSound ("switchDay");
 			SpaceSpawner.instance.trySpawnEruption ();
 			gameDay++;
+			if (gameDay == 1) {
+				SpaceSpawner.instance.startMenace ();
+			}
 		}
 	}
 
@@ -105,6 +110,14 @@ public class GameManager : MonoBehaviour {
 		GameObject toInstantiate = Instantiate (explosion, position, Quaternion.identity) as GameObject;
 		toInstantiate.transform.parent = this.transform;
 		//toInstantiate.transform.parent = this.transform;
+	}
+
+	public bool getEndGame(){
+		return endGame;
+	}
+
+	public void setEndGame(bool val){
+		endGame = val;
 	}
 
 	public float getOxygen(){
@@ -170,6 +183,8 @@ public class GameManager : MonoBehaviour {
 
 	public void checkGameOver(){
 		if (energy <= 0) {
+			endGame = true;
+			MusicManager.instance.launchGameOver ();
 			energy = 0;
 			gameOverPanel.SetActive (true);
 		}

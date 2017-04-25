@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour {
 
 	public AudioClip switchDay;
 
+	bool muteSound=false;
+
 	public void launchSound(string sound){
 		for (int i = 0; i < piste.Length; i++) {
 			if ((!piste [i].isPlaying)||(piste[i].clip==null)) {
@@ -22,6 +24,24 @@ public class SoundManager : MonoBehaviour {
 				return;
 			}
 		}
+	}
+
+	public void soundMuted(){
+		if (muteSound) {
+			for (int i = 0; i < piste.Length; i++) {
+				piste [i].volume = 0f;
+			}
+		} 
+	}
+
+	public void relaunchSound(){
+		for (int i = 0; i < piste.Length; i++) {
+			piste [i].volume = 1f;
+		}
+	}
+
+	public void setSoundIsMuted(bool val){
+		muteSound = val;
 	}
 
 	public void prepareSound(AudioSource source, string audioClip){

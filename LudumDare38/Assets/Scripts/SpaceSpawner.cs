@@ -18,14 +18,13 @@ public class SpaceSpawner : MonoBehaviour {
 	bool spawnedAlien = false;
 
 	float maxTimeBetweenRessource;
-	float timePassed;
+	float timerRessource;
 
 	float timerMenace;
 
-
 	void Start () {
 		maxTimeBetweenRessource = Random.Range (1f, 5f);
-		timePassed = maxTimeBetweenRessource;
+		timerRessource = maxTimeBetweenRessource;
 		timerMenace = Random.Range (125f, 240f);
 	}
 
@@ -40,7 +39,7 @@ public class SpaceSpawner : MonoBehaviour {
 	}
 
 	void Update () {
-		timePassed -= Time.deltaTime;
+		timerRessource -= Time.deltaTime;
 		timerMenace -= Time.deltaTime;
 
 		if (spawnAlien) {
@@ -73,10 +72,10 @@ public class SpaceSpawner : MonoBehaviour {
 					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
 			}
 		}
-		if (timePassed <= 0) {
+		if (timerRessource <= 0) {
 			InstantiateObject (ressourceVolante);
-			maxTimeBetweenRessource = Random.Range (1f, 2f);
-			timePassed = maxTimeBetweenRessource;
+			maxTimeBetweenRessource = Random.Range (0.5f, 1.5f);
+			timerRessource = maxTimeBetweenRessource;
 		}
 	}
 

@@ -30,19 +30,33 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	void Update(){
+		musicMuted ();
 		if (!battleMusicIsLaunch && piste [5].volume > 0f)
 			piste [5].volume -= Time.deltaTime;
 		detectEndMusic ();
 		fadeEffect ();
+	}
+
+	public void musicMuted(){
 		if (muteMusic) {
 			for (int i = 0; i < piste.Length; i++) {
-				piste [i].volume = 0;
+				piste [i].volume = 0f;
 			}
+		} 
+	}
+
+	public void relaunchMusic(){
+		//NOPE
+		for (int i = 0; i < piste.Length; i++) {
+			piste [i].volume = 1f;
 		}
+	}
+	public void setMusicIsMuted(bool val){
+		muteMusic = val;
 	}
 
 	public void detectEndMusic(){
-		for (int i = 0; i < piste.Length-1; i++) {
+		for (int i = 0; i < piste.Length; i++) {
 			if (!piste [i].isPlaying){
 				launchMusic ();
 				return;
@@ -123,7 +137,7 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	public void verifyPiste(int constructionNumber){
-		if (constructionNumber % 1 == 0) {
+		if (constructionNumber % 4 == 0) {
 			int calculTest = constructionNumber - prevConstructionNumber;
 			if (calculTest > 0) {
 				launchNextPiste ();

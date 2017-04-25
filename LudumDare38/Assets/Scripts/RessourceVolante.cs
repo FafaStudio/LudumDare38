@@ -84,16 +84,16 @@ public class RessourceVolante : MonoBehaviour {
 		SoundManager.instance.launchSound ("getRessource");
 		switch (currentRessource) {
 		case ressource.energy:
-			GameManager.instance.addEnergy (100f);
+			GameManager.instance.addEnergy (10f);
 			break;
 		case ressource.gem:
-			GameManager.instance.addGem (100f);
+			GameManager.instance.addGem (10f);
 			break;
 		case ressource.mineral:
 			GameManager.instance.addMineral (100f);
 			break;
 		case ressource.oxygen:
-			GameManager.instance.addOxygen (100f);
+			GameManager.instance.addOxygen (10f);
 			break;
 		case ressource.wood:
 			GameManager.instance.addWood (100f);

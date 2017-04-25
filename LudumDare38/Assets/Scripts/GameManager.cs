@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
 	//360 /dayDuration
 	void FixedUpdate () {
 		checkGameOver ();
+		verifyMenace ();
 		if(Time.time - startLastDay >= dayDuration){
 			//newDay();
 			startLastDay = Time.time;
@@ -58,10 +59,13 @@ public class GameManager : MonoBehaviour {
 
 	public void addMenace(GameObject val){
 		menace.Add (val);
-		print (menace.Count);
 	}
 	public void removeMenace(GameObject val){
 		menace.Remove (val);
+		verifyMenace ();
+	}
+
+	public void verifyMenace(){
 		if (menace.Count == 0) {
 			MusicManager.instance.removeBatuluPiste ();
 		}

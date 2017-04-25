@@ -151,7 +151,7 @@ public class WorldPart : MonoBehaviour {
 			DestroyMainConstruct ();
 		}
 		if (secondaryConstruct.constructName !="Empty") {
-			removeSecondaryConstruct ();
+			destroySecondaryConstruct ();
 		}
 	}
 
@@ -168,7 +168,14 @@ public class WorldPart : MonoBehaviour {
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
+	public void destroySecondaryConstruct(){
+		Destroy(secondaryConstruct.gameObject);
+		secondaryConstruct = secondaryEmptyConstruct;
+		builder.displayBuilderMenu();
+	}
+
 	public void removeSecondaryConstruct(){
+		SoundManager.instance.launchSound ("removeMainUI");
 		Destroy(secondaryConstruct.gameObject);
 		secondaryConstruct = secondaryEmptyConstruct;
 		builder.displayBuilderMenu();

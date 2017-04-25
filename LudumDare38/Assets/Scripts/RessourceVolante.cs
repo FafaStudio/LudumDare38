@@ -103,13 +103,13 @@ public class RessourceVolante : MonoBehaviour {
 			GameManager.instance.addEnergy (50f);
 			break;
 		case ressource.gem:
-			GameManager.instance.addGem (50f);
+			GameManager.instance.addGem (10f);
 			break;
 		case ressource.mineral:
 			GameManager.instance.addMineral (100f);
 			break;
 		case ressource.oxygen:
-			GameManager.instance.addOxygen (50f);
+			GameManager.instance.addOxygen (100f);
 			break;
 		case ressource.wood:
 			GameManager.instance.addWood (100f);

@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void verifyMenace(){
-		if (menace.Count == 0) {
+		if (menace.Count <= 0) {
 			MusicManager.instance.removeBatuluPiste ();
 		}
 	}

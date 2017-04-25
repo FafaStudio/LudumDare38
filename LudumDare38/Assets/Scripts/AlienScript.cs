@@ -11,6 +11,9 @@ public class AlienScript : MonoBehaviour {
 	float chronoSound = 0f;
 	float maxChronoSound = 0f;
 
+	bool alienised = false;
+	bool isRunningAway = false;
+
 	void Start () {
 		MusicManager.instance.launchBatuluPiste ();
 		GameManager.instance.addMenace (this.gameObject);
@@ -18,7 +21,6 @@ public class AlienScript : MonoBehaviour {
 		origin = transform.position;
 		findWorldPart();
 		transform.rotation = Quaternion.Euler(0, 0, worldPart.transform.rotation.eulerAngles.z-75);
-		worldPart.GetComponent<WorldPart>().alienize(gameObject);
 		objective = worldPart.GetComponent<WorldPart>().anchor.transform.position;
 	}
 
@@ -27,6 +29,10 @@ public class AlienScript : MonoBehaviour {
 			goToWorldPart ();
 		} else {
 			playSound ();
+			if (!alienised) {
+				alienised = true;
+				worldPart.GetComponent<WorldPart> ().alienize (gameObject);
+			}
 		}
 	}
 	private void findWorldPart(){
@@ -38,6 +44,8 @@ public class AlienScript : MonoBehaviour {
 	}
 
 	public void playSound(){
+		if (isRunningAway)
+			return;
 		chronoSound -= Time.deltaTime;
 		if (chronoSound <= 0f) {
 			SoundManager.instance.launchSound ("menaceGuepe");
@@ -47,6 +55,7 @@ public class AlienScript : MonoBehaviour {
 	}
 
 	public void runAway(){
+		isRunningAway = true;
 		objective = origin;
 		SpaceSpawner.instance.setHasSpawnedalien (false);
 		GameManager.instance.removeMenace (this.gameObject);

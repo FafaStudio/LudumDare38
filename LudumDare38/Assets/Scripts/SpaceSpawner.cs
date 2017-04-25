@@ -22,10 +22,12 @@ public class SpaceSpawner : MonoBehaviour {
 
 	float timerMenace;
 
+	bool start = false;
+
 	void Start () {
 		maxTimeBetweenRessource = Random.Range (1f, 5f);
 		timerRessource = maxTimeBetweenRessource;
-		timerMenace = Random.Range (125f, 240f);
+		timerMenace = Random.Range (30f, 120f);
 	}
 
 	Vector3 getRandomOuterPosition(){
@@ -40,7 +42,11 @@ public class SpaceSpawner : MonoBehaviour {
 
 	void Update () {
 		timerRessource -= Time.deltaTime;
-		timerMenace -= Time.deltaTime;
+		if (timerRessource <= 0) {
+			InstantiateObject (ressourceVolante);
+			maxTimeBetweenRessource = Random.Range (0.2f, 1f);
+			timerRessource = maxTimeBetweenRessource;
+		}
 
 		if (spawnAlien) {
 			spawnAlien = false;
@@ -56,6 +62,9 @@ public class SpaceSpawner : MonoBehaviour {
 			spawnMenace ("Eruption");
 		}
 
+		if (!start)
+			return;
+		timerMenace -= Time.deltaTime;
 		if (timerMenace <= 0) {
 			int rand = (int)Random.Range (0f, 2f);
 			if (rand == 0) {
@@ -66,18 +75,13 @@ public class SpaceSpawner : MonoBehaviour {
 				setTimerMenace ();
 			}
 		}
-		if (timerRessource <= 0) {
-			InstantiateObject (ressourceVolante);
-			maxTimeBetweenRessource = Random.Range (0.5f, 1.5f);
-			timerRessource = maxTimeBetweenRessource;
-		}
 	}
 
 	public void setTimerMenace(){
 		if(GameManager.instance.getDay()>3)
-			timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()-3));
+			timerMenace = Random.Range (30f/GameManager.instance.getDay()-3, 120f/(GameManager.instance.getDay()-3));
 		else
-			timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
+			timerMenace = Random.Range (30f/GameManager.instance.getDay(), 120f/(GameManager.instance.getDay()));
 	}
 
 	public void spawnMenace(string menace){
@@ -94,14 +98,24 @@ public class SpaceSpawner : MonoBehaviour {
 	}
 
 	public void trySpawnEruption(){
-		int random = (int)Random.Range (0f, 11f);
-		if (random <= 1) {
-			setTimerMenace ();
+		int random = (int)Random.Range (0f, 10f);
+		if (random == 0) {
 			spawnMenace ("Eruption");
 			spawnMenace ("Eruption");
-		}else if (random <= 3) {
+			spawnMenace ("Eruption");
 			spawnMenace ("Eruption");
 		}
+		if (random < 3) {
+			spawnMenace ("Eruption");
+			spawnMenace ("Eruption");
+			spawnMenace ("Eruption");
+		}else if (random < 5) {
+			spawnMenace ("Eruption");
+			spawnMenace ("Eruption");
+		}else if(random <8){
+			spawnMenace ("Eruption");
+		}else
+			spawnMenace ("Eruption");
 	}
 
 	public GameObject InstantiateObject(GameObject objectToInstantiate ){

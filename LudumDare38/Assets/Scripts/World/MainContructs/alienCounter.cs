@@ -17,11 +17,13 @@ public class alienCounter : MonoBehaviour {
 	void OnDestroy() {
 		removeEffect();
 	}
+
 	IEnumerator WaitAtAwake()
     {
         yield return new WaitForSeconds(1);
         applyEffect();
     }
+
 	private void applyEffect(){
 		int index = mainConstruct.getPart().getIndex();
 		mainConstruct.getPart().addAlienCounter();

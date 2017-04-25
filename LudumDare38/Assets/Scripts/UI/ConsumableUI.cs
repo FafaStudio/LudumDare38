@@ -29,8 +29,11 @@ public class ConsumableUI : MonoBehaviour {
 	}
 
 	public void instantiate(){
-		if(mainContructComponent.canBeUse(builder.getActualPart())){
-			mainContructComponent.useItem(builder.getActualPart());
+		if(mainContructComponent.haveEnoughtResources()){
+			if(mainContructComponent.canBeUse(builder.getActualPart())){
+				mainContructComponent.useItem(builder.getActualPart());
+				mainContructComponent.payItem();
+			}
 		}
 	}
 }

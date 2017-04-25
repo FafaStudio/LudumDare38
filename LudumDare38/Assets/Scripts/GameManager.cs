@@ -25,17 +25,19 @@ public class GameManager : MonoBehaviour {
 	public GameObject explosion;
 
 	public GameObject gameOverPanel;
+	public GameObject youWinPanel;
 
 	void Start () {
-		oxygen = 1000;
-		wood = 1000;
-		mineral = 1000;
-		energy = 10;
-		gem = 1000;
+		oxygen = 0;
+		wood = 0;
+		mineral = 0;
+		energy = 100;
+		gem = 0;
 		startLastDay = Time.time;
 		InvokeRepeating("getSecondeResources", 0, 1);
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 		gameOverPanel.SetActive (false);
+		youWinPanel.SetActive (false);
 		menace = new List<GameObject> ();
 	}
 
@@ -157,6 +159,10 @@ public class GameManager : MonoBehaviour {
 			energy = 0;
 			gameOverPanel.SetActive (true);
 		}
+	}
+
+	public void launchWinPanel(){
+		youWinPanel.SetActive (true);
 	}
 
 

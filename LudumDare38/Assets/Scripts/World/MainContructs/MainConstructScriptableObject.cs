@@ -19,4 +19,6 @@ public class MainConstructUpgrades{
 	public int upgradeMineralCost;
 	public int upgradeGemCost;
 	public int energyCost;
+
+	public int oxygenCost;
 }

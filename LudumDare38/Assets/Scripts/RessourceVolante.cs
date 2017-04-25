@@ -18,6 +18,10 @@ public class RessourceVolante : MonoBehaviour {
 	public Sprite energySprite;
 	public Sprite gemSprite;
 
+	private bool magnetized;
+
+	GameObject magnet;
+
 	void Start () {
 		currentRessource = GetRandomEnum<ressource> ();
 		direction = new Vector3 (Random.Range (-0.05f, 0.05f), Random.Range (-0.05f, 0.05f), 0f);
@@ -32,6 +36,13 @@ public class RessourceVolante : MonoBehaviour {
 	}
 
 	void Update () {
+		if(magnetized){
+			transform.position = Vector3.MoveTowards(transform.position, magnet.transform.position, 4f*Time.deltaTime);
+			if(transform.position == magnet.transform.position){
+				gainRessource();
+			}
+		}
+
 		if(canMove)
 			transform.Translate (direction);
 	}
@@ -74,7 +85,12 @@ public class RessourceVolante : MonoBehaviour {
 		}
 
 		if(other.gameObject.tag == "Magnet"){
-			canMove = false;
+			if(!magnet){
+				magnet = other.gameObject;
+				magnetized = true;
+				canMove = false;
+			}
+			
 			//direction = (other.transform.position - this.transform.position).normalized;
 		}
 	}

@@ -49,7 +49,6 @@ public class SpaceSpawner : MonoBehaviour {
 			spawnEruption = false;
 			spawnMenace ("Eruption");
 		}
-			
 		if (timePassed <= 0) {
 			InstantiateObject (ressourceVolante);
 			maxTimeBetweenRessource = Random.Range (1f, 2f);

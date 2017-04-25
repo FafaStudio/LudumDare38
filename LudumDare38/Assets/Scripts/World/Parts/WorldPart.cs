@@ -50,14 +50,17 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void launchEruption(){
+		MusicManager.instance.launchBatuluPiste ();
 		eruptionParticleEffect.SetActive (true);
 		SoundManager.instance.launchSound ("Eruption");
+		GameManager.instance.addMenace (this.gameObject);
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Play();
 	}
 
 	public void stopEruption(){
 		destroyConstruction ();
 		sterilize ();
+		GameManager.instance.removeMenace (this.gameObject);
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
 		eruptionParticleEffect.SetActive (false);
 	}
@@ -124,6 +127,7 @@ public class WorldPart : MonoBehaviour {
 		if(mainConstruct.constructName == "Home"){
 			worldController.setIsHomeBuild(false);
 		}
+		GameManager.instance.launchExplosion (mainConstruct.transform.position);
 		Destroy(mainConstruct.gameObject);
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
@@ -219,8 +223,6 @@ public class WorldPart : MonoBehaviour {
 	public void alienize(GameObject alien){
 		this.isAliened = true;
 		this.alien = alien;
-		print (mainConstruct.name);
-		print (secondaryConstruct.name);
 		/*if (mainConstruct.name != "Empty") {
 			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.grey;
 		}

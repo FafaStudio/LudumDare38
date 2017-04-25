@@ -90,11 +90,7 @@
  <HintPath>/Applications/Unity5.5/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
-<<<<<<< HEAD
  <HintPath>/Applications/Unity5.5/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
-=======
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
->>>>>>> 00219534201870071a8af702c5e9605a8c0dc8ff
  </Reference>
  <Reference Include="UnityEditor.VR">
  <HintPath>/Applications/Unity5.5/Unity.app/Contents/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>

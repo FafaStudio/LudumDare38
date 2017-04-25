@@ -12,6 +12,9 @@ public class AlienScript : MonoBehaviour {
 	float maxChronoSound = 0f;
 
 	void Start () {
+		MusicManager.instance.launchBatuluPiste ();
+		GameManager.instance.addMenace (this.gameObject);
+
 		origin = transform.position;
 		findWorldPart();
 		transform.rotation = Quaternion.Euler(0, 0, worldPart.transform.rotation.eulerAngles.z-75);
@@ -46,6 +49,7 @@ public class AlienScript : MonoBehaviour {
 	public void runAway(){
 		objective = origin;
 		SpaceSpawner.instance.setHasSpawnedalien (false);
+		GameManager.instance.removeMenace (this.gameObject);
 		Destroy(gameObject, 5);
 	}
 

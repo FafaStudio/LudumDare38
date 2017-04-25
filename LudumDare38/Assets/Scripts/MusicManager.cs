@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour {
 
 	int prevConstructionNumber =0;
 
-	bool battleMusicIsLaunch=false;
+	public bool battleMusicIsLaunch;
 
 	public bool muteMusic=false;
 
@@ -17,6 +17,7 @@ public class MusicManager : MonoBehaviour {
 
 	public AudioClip[] music1;
 	public AudioClip[] music2;
+	public AudioClip[] music3;
 
 	int indiceMusic;
 
@@ -31,8 +32,6 @@ public class MusicManager : MonoBehaviour {
 	void Update(){
 		if (!battleMusicIsLaunch && piste [5].volume > 0f)
 			piste [5].volume -= Time.deltaTime;
-		if (battleMusicIsLaunch)
-			stopBattlePiste ();
 		detectEndMusic ();
 		fadeEffect ();
 		if (muteMusic) {
@@ -43,28 +42,37 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	public void detectEndMusic(){
-		for (int i = 0; i < piste.Length; i++) {
+		for (int i = 0; i < piste.Length-1; i++) {
 			if (!piste [i].isPlaying){
 				launchMusic ();
 				return;
 			}
-
 		}
 	}
 
 	public void launchMusic(){
-		if (indiceMusic == 1) {
+		int random = (int)Random.Range (1f, 4f);
+		while(indiceMusic==random)
+			random = (int)Random.Range (1f, 4f);
+		if (random == 2) {
 			indiceMusic = 2;
 			for (int i = 0; i < piste.Length; i++) {
 				piste [i].Stop ();
 				piste [i].clip = music2 [i];
 				piste [i].Play ();
 			}
-		} else {
+		} else if (random == 1) {
 			indiceMusic = 1;
 			for (int i = 0; i < piste.Length; i++) {
 				piste [i].Stop ();
 				piste [i].clip = music1 [i];
+				piste [i].Play ();
+			}
+		} else {
+			indiceMusic = 3;
+			for (int i = 0; i < piste.Length; i++) {
+				piste [i].Stop ();
+				piste [i].clip = music3 [i];
 				piste [i].Play ();
 			}
 		}
@@ -76,7 +84,6 @@ public class MusicManager : MonoBehaviour {
 				piste [i].volume += Time.deltaTime;
 			else if (piste [i].volume > 0.6f)
 				piste [i].volume = 0.6f;
-				
 		}
 	}
 
@@ -89,7 +96,6 @@ public class MusicManager : MonoBehaviour {
 
 	public void launchBatuluPiste(){
 		if (battleMusicIsLaunch) {
-			chronoBattleMusic += 5f;
 			return;
 		}
 		battleMusicIsLaunch = true;
@@ -105,6 +111,7 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	public void removeBatuluPiste(){
+		piste [5].volume = 0f;
 		battleMusicIsLaunch = false;
 	}
 

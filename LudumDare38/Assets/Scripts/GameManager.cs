@@ -16,25 +16,32 @@ public class GameManager : MonoBehaviour {
 
 	public WorldController worldController;
 
+	List<GameObject> menace;
+
 	int gameDay = 0;
 	float dayDuration = 120;
 	float startLastDay;
 
-	// Use this for initialization
+	public GameObject explosion;
+
+	public GameObject gameOverPanel;
+
 	void Start () {
 		oxygen = 1000;
 		wood = 1000;
 		mineral = 1000;
-		energy = 1000;
+		energy = 10;
 		gem = 1000;
 		startLastDay = Time.time;
 		InvokeRepeating("getSecondeResources", 0, 1);
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+		gameOverPanel.SetActive (false);
+		menace = new List<GameObject> ();
 	}
-	//360 /dayDuration
 
-	// Update is called once per frame
+	//360 /dayDuration
 	void FixedUpdate () {
+		checkGameOver ();
 		if(Time.time - startLastDay >= dayDuration){
 			//newDay();
 			startLastDay = Time.time;
@@ -44,6 +51,21 @@ public class GameManager : MonoBehaviour {
 			SpaceSpawner.instance.trySpawnEruption ();
 			gameDay++;
 		}
+	}
+
+	public void addMenace(GameObject val){
+		menace.Add (val);
+		print (menace.Count);
+	}
+	public void removeMenace(GameObject val){
+		menace.Remove (val);
+		if (menace.Count == 0) {
+			MusicManager.instance.removeBatuluPiste ();
+		}
+	}
+
+	public int getMenace(){
+		return menace.Count;
 	}
 
 	public void getSecondeResources(){
@@ -60,6 +82,12 @@ public class GameManager : MonoBehaviour {
 		mineral += worldController.getDayMineralProduct();
 		energy += worldController.getDayEnergieProduct();
 		gem += worldController.getDayGemProduct();
+	}
+
+	public void launchExplosion(Vector2 position){
+		GameObject toInstantiate = Instantiate (explosion, position, Quaternion.identity) as GameObject;
+		toInstantiate.transform.parent = this.transform;
+		//toInstantiate.transform.parent = this.transform;
 	}
 
 	public float getOxygen(){
@@ -89,6 +117,7 @@ public class GameManager : MonoBehaviour {
 	}
 	public void consumneEnergy(float value){
 		energy-=value;
+		checkGameOver ();
 	}
 	public void consumneGem(float value){
 		gem-=value;
@@ -120,6 +149,13 @@ public class GameManager : MonoBehaviour {
 
 	public float getTimePassed(){
 		return Time.time - startLastDay;
+	}
+
+	public void checkGameOver(){
+		if (energy <= 0) {
+			energy = 0;
+			gameOverPanel.SetActive (true);
+		}
 	}
 
 

@@ -16,11 +16,14 @@ public class Asteroid : MonoBehaviour {
 	float speed;
 
 	void Start () {
+		MusicManager.instance.launchBatuluPiste ();
+		GameManager.instance.addMenace (this.gameObject);
+
 		GetComponent<SpriteRenderer>().sprite = asteroidSprite[(int)Random.Range(0f, asteroidSprite.Length)];
 		float scale = Random.Range (1f, 2f);
 		transform.localScale = new Vector3(scale,scale,1f);
 		speedRotation = (int)Random.Range (10f, 50f);
-		speed = Random.Range (0.1f, 2f);
+		speed = Random.Range (0.5f, 2f);
 		origin = transform.position;
 		findWorldPart();
 		transform.rotation = Quaternion.Euler(0, 0, worldPart.transform.rotation.eulerAngles.z-75);
@@ -34,6 +37,8 @@ public class Asteroid : MonoBehaviour {
 			goToWorldPart ();
 		else {
 			SoundManager.instance.launchSound ("explosionAsteroid");
+			GameManager.instance.launchExplosion (this.transform.position);
+			GameManager.instance.removeMenace (this.gameObject);
 			Destroy (this.gameObject);
 		}
 	}
@@ -51,17 +56,22 @@ public class Asteroid : MonoBehaviour {
 
 	public void runAway(){
 		objective = origin;
+		GameManager.instance.removeMenace (this.gameObject);
 		Destroy(gameObject, 20);
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag =="Ground") {
 			SoundManager.instance.launchSound ("explosionAsteroid");
+			GameManager.instance.launchExplosion (this.transform.position);
+			GameManager.instance.removeMenace (this.gameObject);
 			Destroy (this.gameObject);
 		}
 		if (other.gameObject.tag =="Structure") {
 			SoundManager.instance.launchSound ("explosionAsteroid");
+			GameManager.instance.launchExplosion (this.transform.position);
 			other.transform.parent.GetComponent<MainConstruct> ().getPart ().destroyConstruction ();
+			GameManager.instance.removeMenace (this.gameObject);
 			Destroy (this.gameObject);
 		}
 	}

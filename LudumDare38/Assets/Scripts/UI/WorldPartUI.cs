@@ -24,6 +24,7 @@ public class WorldPartUI : MonoBehaviour {
 		removeButton.gameObject.SetActive(true);
 	}
 	public void displayInterfaceSecondary(bool needRepair){
+		buildingPartInterface.gameObject.SetActive(true);
 		if(needRepair){
 			repairButton.gameObject.SetActive(true);
 		}

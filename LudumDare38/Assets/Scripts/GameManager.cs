@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour {
 		mineral = 100;
 		energy = 100;
 		gem = 0;
+
+
+		oxygen = 10000;
+		wood = 10000;
+		mineral = 10000;
+		energy = 10000;
+		gem = 10000;
 		startLastDay = Time.time;
 		InvokeRepeating("getSecondeResources", 0, 1);
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);

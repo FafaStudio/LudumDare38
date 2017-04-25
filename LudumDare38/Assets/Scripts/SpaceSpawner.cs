@@ -60,16 +60,10 @@ public class SpaceSpawner : MonoBehaviour {
 			int rand = (int)Random.Range (0f, 2f);
 			if (rand == 0) {
 				spawnMenace ("Alien");
-				if(GameManager.instance.getDay()>3)
-					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()-3));
-				else
-					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
+				setTimerMenace ();
 			} else {
 				spawnMenace ("Asteroid");
-				if(GameManager.instance.getDay()>3)
-					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()-3));
-				else
-					timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
+				setTimerMenace ();
 			}
 		}
 		if (timerRessource <= 0) {
@@ -77,6 +71,13 @@ public class SpaceSpawner : MonoBehaviour {
 			maxTimeBetweenRessource = Random.Range (0.5f, 1.5f);
 			timerRessource = maxTimeBetweenRessource;
 		}
+	}
+
+	public void setTimerMenace(){
+		if(GameManager.instance.getDay()>3)
+			timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()-3));
+		else
+			timerMenace = Random.Range (125f/GameManager.instance.getDay(), 240f/(GameManager.instance.getDay()));
 	}
 
 	public void spawnMenace(string menace){
@@ -95,6 +96,7 @@ public class SpaceSpawner : MonoBehaviour {
 	public void trySpawnEruption(){
 		int random = (int)Random.Range (0f, 11f);
 		if (random <= 1) {
+			setTimerMenace ();
 			spawnMenace ("Eruption");
 			spawnMenace ("Eruption");
 		}else if (random <= 3) {

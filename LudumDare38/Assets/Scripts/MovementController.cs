@@ -43,7 +43,7 @@ public class MovementController : MonoBehaviour {
 	void FixedUpdate () {
 		//if (!canMove)
 		//	return;
-		if (Input.GetKey (KeyCode.Q)) {
+		if ((Input.GetKey (KeyCode.A)||(Input.GetKey (KeyCode.Q)))) {
 			TutorialController.instance.nextIfPosition(2);
 			if(previousOrientation && isBlock){
 				return;

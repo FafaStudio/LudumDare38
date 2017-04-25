@@ -71,6 +71,9 @@ public class MainConstruct : MonoBehaviour
 		return upgrades.mainConstructUpgrades[constructLevel].upgradeGemCost;
 	}
 
+	public int getOxygenCost(){
+		return upgrades.mainConstructUpgrades[constructLevel].oxygenCost;
+	}
 	public int getEnergyCost(){
 		return upgrades.mainConstructUpgrades[constructLevel].energyCost;
 	}

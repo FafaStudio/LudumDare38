@@ -191,7 +191,7 @@ public class WorldPart : MonoBehaviour {
 		if(isAliened){
 			return -secondaryConstruct.getOxygenCost();
 		}
-		return oxygenMultiplicator * mainConstruct.getOxygenProduction() - secondaryConstruct.getOxygenCost();
+		return oxygenMultiplicator * mainConstruct.getOxygenProduction() - secondaryConstruct.getOxygenCost() - mainConstruct.getOxygenCost();
 	}
 	public float getWoodProduct(){
 		if(isAliened){

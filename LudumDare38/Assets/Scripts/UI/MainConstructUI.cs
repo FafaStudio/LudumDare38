@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MainConstructUI : MonoBehaviour {
 	public Builder builder;
 	public GameObject mainContruct;
-	MainConstruct mainContructComponent;
+	public MainConstruct mainContructComponent;
 	public Text description;
 	public Text buildName;
 	public Text buildOxygenCost;
@@ -39,7 +39,7 @@ public class MainConstructUI : MonoBehaviour {
 		buildGemProduction.text = mainContructComponent.getGemProduction() + "/d";
 	}
 
-	public void instantiate(){
+	public virtual void instantiate(){
 		if(builder.getActualPart().canMainConstruct()){
 			if(mainContructComponent.haveEnoughtResources()){
 				builder.getActualPart().addMainConstruct(mainContruct);

@@ -15,7 +15,11 @@ public class TutorialController : MonoBehaviour {
 
 	public void nextTuto(){
 		tutorialPosition++;
-		changeText(tutorialTexts.listText[tutorialPosition].text);
+		if(tutorialPosition >= tutorialTexts.listText.Count){
+			hideTutorial();
+		}	else	{
+			changeText(tutorialTexts.listText[tutorialPosition].text);
+		}
 	}
 
 	public void changeText(string newText){

@@ -2,8 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fusée : MonoBehaviour {
-	public void youWin(){
-		
-	}
+public class SpaceRocket : MainConstruct {
 }

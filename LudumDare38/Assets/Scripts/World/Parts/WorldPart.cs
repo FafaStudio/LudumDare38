@@ -52,11 +52,8 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public void launchEruption(){
-<<<<<<< HEAD
 		MusicManager.instance.launchBatuluPiste ();
-=======
 		isErupting = true;
->>>>>>> d2e0699a71929f8614f0149d30022d3fd0c2197c
 		eruptionParticleEffect.SetActive (true);
 		SoundManager.instance.launchSound ("Eruption");
 		GameManager.instance.addMenace (this.gameObject);
@@ -66,10 +63,8 @@ public class WorldPart : MonoBehaviour {
 	public void stopEruption(){
 		isErupting = false;
 		destroyConstruction ();
-<<<<<<< HEAD
 		sterilize ();
 		GameManager.instance.removeMenace (this.gameObject);
-=======
 		setIsSterile(true);
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
 		eruptionParticleEffect.SetActive (false);
@@ -77,7 +72,6 @@ public class WorldPart : MonoBehaviour {
 
 	public void interuptEruption(){
 		isErupting = false;
->>>>>>> d2e0699a71929f8614f0149d30022d3fd0c2197c
 		eruptionParticleEffect.GetComponentInChildren<ParticleSystem> ().Stop();
 		eruptionParticleEffect.SetActive (false);
 	}

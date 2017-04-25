@@ -49,11 +49,8 @@ public class AlienScript : MonoBehaviour {
 	public void runAway(){
 		objective = origin;
 		SpaceSpawner.instance.setHasSpawnedalien (false);
-<<<<<<< HEAD
 		GameManager.instance.removeMenace (this.gameObject);
-=======
 		SpaceSpawner.instance.actualAlien = null;
->>>>>>> d2e0699a71929f8614f0149d30022d3fd0c2197c
 		Destroy(gameObject, 5);
 	}
 

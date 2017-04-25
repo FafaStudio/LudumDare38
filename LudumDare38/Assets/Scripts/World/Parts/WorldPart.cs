@@ -122,6 +122,10 @@ public class WorldPart : MonoBehaviour {
 		}
 	}
 
+	public void launchSecondaryConstructionSound(){
+		SoundManager.instance.launchSound ("constructionSecondaire");
+	}
+
 	public void removeMainConstruct(){
 		if(mainConstruct.constructName == "Home"){
 			worldController.setIsHomeBuild(false);
@@ -138,7 +142,7 @@ public class WorldPart : MonoBehaviour {
 		if(mainConstruct.constructName == "Home"){
 			worldController.setIsHomeBuild(false);
 		}
-		GameManager.instance.launchExplosion (mainConstruct.transform.position);
+		GameManager.instance.launchExplosion (mainConstruct.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position);
 		Destroy(mainConstruct.gameObject);
 		mainConstruct = mainEmptyConstruct;
 		builder.displayBuilderMenu();
@@ -163,12 +167,14 @@ public class WorldPart : MonoBehaviour {
 		gameManager.consumneWood(this.secondaryConstruct.getWoodCost());
 		gameManager.consumneMineral(this.secondaryConstruct.getMineralCost());
 		gameManager.consumneGem(this.secondaryConstruct.getGemCost());
+		launchSecondaryConstructionSound ();
 		builder.displayBuilderMenu();
 		worldController.worldConstructs++;
 		MusicManager.instance.verifyPiste (worldController.worldConstructs);
 	}
 
 	public void destroySecondaryConstruct(){
+		GameManager.instance.launchExplosion (secondaryConstruct.GetComponentInChildren<SpriteRenderer>().gameObject.transform.position);
 		Destroy(secondaryConstruct.gameObject);
 		secondaryConstruct = secondaryEmptyConstruct;
 		builder.displayBuilderMenu();
@@ -243,21 +249,21 @@ public class WorldPart : MonoBehaviour {
 	public void alienize(GameObject alien){
 		this.isAliened = true;
 		this.alien = alien;
-		/*if (mainConstruct.name != "Empty") {
-			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.grey;
+		if (mainConstruct.name != "Empty") {
+			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = new Color(0, 199, 241);
 		}
 		if (secondaryConstruct.name != "Empty") {
-			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.grey;
-		}*/
+			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = new Color(0, 199, 241);
+		}
 	}
 
 	public void unalienize(){
-		/*if (mainConstruct.name != "Empty") {
+		if (mainConstruct.name != "Empty") {
 			mainConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
 		}
 		if (secondaryConstruct.name != "Empty") {
 			secondaryConstruct.GetComponentInChildren<SpriteRenderer> ().color = Color.white;
-		}*/
+		}
 		this.isAliened = false;
 		this.alien.GetComponent<AlienScript>().runAway();
 		this.alien = null;

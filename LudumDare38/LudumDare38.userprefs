@@ -1,24 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SpaceSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RessourceVolante.cs">
     <Files>
       <File FileName="Assets/Scripts/World/WorldController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/World/Parts/WorldPart.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AlienScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MovementController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Grapin.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Asteroid.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MainTitle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/World/Parts/WorldPart.cs" Line="175" Column="2" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="24" Column="2" />
       <File FileName="Assets/Scripts/MusicManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SoundManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpaceSpawner.cs" Line="102" Column="27" />
-      <File FileName="Assets/Scripts/GameOverUI.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Tutorial/Editor/TutorialEditorScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Win.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RessourceVolante.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RessourceVolante.cs" Line="22" Column="50" />
       <File FileName="Assets/Scripts/SystemUI.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/World/SecondaryConstructs/SecondaryConstruct.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/World/SecondaryConstructs/SecondaryConstruct.cs" Line="13" Column="26" />
+      <File FileName="Assets/Scripts/World/MainContructs/MainConstruct.cs" Line="30" Column="29" />
+      <File FileName="Assets/Scripts/Asteroid.cs" Line="66" Column="41" />
+      <File FileName="Assets/Scripts/RessourcesUI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

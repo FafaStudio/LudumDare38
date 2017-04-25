@@ -17,16 +17,6 @@ public class SecondaryConstruct : MonoBehaviour {
 	[SerializeField]
 	public SecondaryConstructScriptableObject upgrades;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public bool haveEnoughtResources(){
 		gameManager = GameManager.instance;
 		return upgrades.secondaryConstructUpgrades.buildWoodCost <= gameManager.getWood()
@@ -39,7 +29,6 @@ public class SecondaryConstruct : MonoBehaviour {
 	public WorldPart getPart(){
 		return partLinked;
 	}
-
 
 	public bool canBeReapair(){
 		return this.actualDurability != durability;

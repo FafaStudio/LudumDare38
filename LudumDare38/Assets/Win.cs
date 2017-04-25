@@ -11,7 +11,7 @@ public class Win : MonoBehaviour {
 	}
 	private IEnumerator win()
     {
-         yield return new WaitForSeconds(5);
+         yield return new WaitForSeconds(600);
 		 youWin();
     }
 	public void youWin(){

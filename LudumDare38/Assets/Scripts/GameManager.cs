@@ -33,10 +33,10 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 		if (!isDebugVersion) {
-			oxygen = 0;
-			wood = 150;
-			mineral = 100;
-			energy = 100;
+			oxygen = 50;
+			wood = 200;
+			mineral = 200;
+			energy = 150;
 			gem = 0;
 		} else {
 			oxygen = 10000;

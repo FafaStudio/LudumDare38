@@ -36,11 +36,11 @@ public class Builder : MonoBehaviour {
 
 	public void displayBuilderMenu(){
 		worldPartUI.undisplayInterface();
-		if(actualPart.mainConstruct.name != "Empty"){
+		if(actualPart.mainConstruct.constructName != "Empty"){
 			worldPartUI.displayInterfaceMain(actualPart.mainConstruct.canBeUpgraded());
 		}
 
-		if(actualPart.secondaryConstruct.name != "Empty"){
+		if(actualPart.secondaryConstruct.constructName != "Empty"){
 			worldPartUI.displayInterfaceSecondary(actualPart.secondaryConstruct.canBeReapair());
 		}
 		worldPartUI.displayLogoDefense(actualPart);

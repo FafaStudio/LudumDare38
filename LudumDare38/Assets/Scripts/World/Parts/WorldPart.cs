@@ -98,11 +98,11 @@ public class WorldPart : MonoBehaviour {
 	}
 
 	public bool canMainConstruct(){
-		return mainConstruct.name == "Empty";
+		return mainConstruct.constructName == "Empty";
 	}
 
 	public bool canSecondaryConstruct(){
-		return secondaryConstruct.name == "Empty";
+		return secondaryConstruct.constructName == "Empty";
 	}
 
 	public void addMainConstruct(GameObject mainConstruct){

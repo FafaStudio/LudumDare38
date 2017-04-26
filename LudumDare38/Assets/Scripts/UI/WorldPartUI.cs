@@ -41,10 +41,6 @@ public class WorldPartUI : MonoBehaviour {
 		removeButtonSecondary.gameObject.SetActive(false);
 	}
 
-	public void upgrade(){
-		builder.upgrade();
-	}
-
 	public void remove(){
 		builder.remove();
 	}

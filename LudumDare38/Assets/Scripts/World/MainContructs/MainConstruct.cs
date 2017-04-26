@@ -37,9 +37,15 @@ public class MainConstruct : MonoBehaviour
 		&& upgrades.mainConstructUpgrades[constructLevel].upgradeMineralCost <= gameManager.getMineral()
 		&& upgrades.mainConstructUpgrades[constructLevel].upgradeGemCost <= gameManager.getGem();
 	}
+	public bool haveEnoughtResourcesUpgrade(){
+		gameManager = GameManager.instance;
+		return upgrades.mainConstructUpgrades[constructLevel+1].upgradeWoodCost <= gameManager.getWood()
+		&& upgrades.mainConstructUpgrades[constructLevel+1].upgradeMineralCost <= gameManager.getMineral()
+		&& upgrades.mainConstructUpgrades[constructLevel+1].upgradeGemCost <= gameManager.getGem();
+	}
 
 	public bool canBeUpgraded(){
-		return upgrades.mainConstructUpgrades.Count > constructLevel+1 && haveEnoughtResources();
+		return upgrades.mainConstructUpgrades.Count > constructLevel+1 && haveEnoughtResourcesUpgrade();
 	}
 
 	public void upgrade(){

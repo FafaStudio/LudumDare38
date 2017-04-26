@@ -46,10 +46,6 @@ public class Builder : MonoBehaviour {
 		worldPartUI.displayLogoDefense(actualPart);
 	}
 
-	public void upgrade(){
-		actualPart.mainConstruct.upgrade();
-	}
-
 	public void remove(){
 		actualPart.removeMainConstruct();
 	}
